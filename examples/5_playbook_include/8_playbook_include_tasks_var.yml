@@ -1,0 +1,19 @@
+---
+
+- name: Run cfg commands on routers
+  hosts: 192.168.100.1
+  gather_facts: false
+  connection: local
+
+  tasks:
+
+    - include: tasks/cisco_ospf_cfg.yml
+    - include: tasks/ntc_show.yml ntc_command="sh ip route"
+
+  handlers:
+
+    - name: save config
+      ios_command:
+        commands:
+          - write
+        provider: "{{ cli }}"

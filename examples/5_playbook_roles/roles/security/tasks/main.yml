@@ -1,0 +1,17 @@
+---
+
+- name: Global security config
+  ios_config:
+    lines:
+      - service password-encryption
+      - no ip http server
+      - no ip http secure-server
+    provider: "{{ cli }}"
+
+- name: Configure vty security features
+  ios_config:
+    parents:
+      - line vty 0 4
+    lines:
+      - transport input ssh
+    provider: "{{ cli }}" 

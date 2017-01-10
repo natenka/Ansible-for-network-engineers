@@ -1,0 +1,17 @@
+---
+
+- name: Global usability config
+  ios_config:
+    lines:
+      - no ip domain lookup
+    provider: "{{ cli }}"
+
+- name: Configure vty usability features
+  ios_config:
+    parents:
+      - line vty 0 4
+    lines:
+      - exec-timeout 30 0
+      - logging synchronous
+      - history size 100
+    provider: "{{ cli }}" 

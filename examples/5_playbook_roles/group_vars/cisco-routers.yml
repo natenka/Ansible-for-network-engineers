@@ -1,0 +1,9 @@
+---
+
+log_server: 10.255.100.1
+ntp_server: 10.255.100.1
+users:
+  user1: pass1
+  user2: pass2
+  user3: pass3
+

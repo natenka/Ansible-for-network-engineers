@@ -1,0 +1,9 @@
+---
+
+- name: Initial config
+  hosts: cisco-routers
+  gather_facts: false
+  connection: local
+  roles:
+    - usability
+    - security

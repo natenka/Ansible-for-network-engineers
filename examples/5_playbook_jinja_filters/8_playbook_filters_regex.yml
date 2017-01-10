@@ -1,0 +1,40 @@
+---
+
+- name: Cfg VPN
+  hosts: 192.168.100.1,192.168.100.2
+  gather_facts: false
+  connection: local
+
+
+  vars:
+    wan_ip_1: 192.168.100.1
+    wan_ip_2: 192.168.100.2
+    tun_ip_1: 10.0.1.1 255.255.255.252
+    tun_ip_2: 10.0.1.2 255.255.255.252
+
+
+  tasks:
+
+    - name: Collect facts
+      ios_facts:
+        gather_subset:
+          - "!hardware"
+        provider: "{{ cli }}"
+
+    - name: Collect current tunnel numbers
+      set_fact:
+        tun_num: "{{ ansible_net_config | regex_findall('interface Tunnel(.*)') }}"
+
+    #- debug: var=tun_num
+
+    - name: Generate VPN R1
+      template:
+        src: templates/ios_vpn1.txt
+        dest: configs/result1.txt
+      when: wan_ip_1 in ansible_net_all_ipv4_addresses
+
+    - name: Generate VPN R2
+      template:
+        src: templates/ios_vpn2.txt
+        dest: configs/result2.txt
+      when: wan_ip_2 in ansible_net_all_ipv4_addresses

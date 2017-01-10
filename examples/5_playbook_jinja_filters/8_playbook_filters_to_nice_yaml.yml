@@ -1,0 +1,19 @@
+---
+
+- name: Collect IOS facts
+  hosts: cisco-routers
+  gather_facts: false
+  connection: local
+
+  tasks:
+
+    - name: Facts
+      ios_facts:
+        gather_subset: all
+        provider: "{{ cli }}"
+      register: ios_facts_result
+
+    - name: Copy facts to files
+      copy:
+        content: "{{ ios_facts_result | to_nice_yaml }}"
+        dest: "all_facts/{{inventory_hostname}}_facts.yml"

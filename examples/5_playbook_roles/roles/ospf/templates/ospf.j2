@@ -1,0 +1,12 @@
+router ospf 1
+ router-id {{ mgmnt_ip }}
+ ispf
+ auto-cost reference-bandwidth 10000
+{% for ip in ansible_net_all_ipv4_addresses %}
+ network {{ ip }} 0.0.0.0 area 0
+{% endfor %}
+{% for network in current_ospf_networks %}
+ {% if network.split()[0] not in ansible_net_all_ipv4_addresses %}
+   no network {{ network }} area 0
+ {% endif %}
+{% endfor %}

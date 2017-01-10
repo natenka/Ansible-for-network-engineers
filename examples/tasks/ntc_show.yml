@@ -1,0 +1,10 @@
+---
+
+- ntc_show_command:
+    connection: ssh
+    platform: "cisco_ios"
+    command: "{{ ntc_command }}"
+    host: "{{ inventory_hostname }}"
+    username: "cisco"
+    password: "cisco"
+    template_dir: "library/ntc-ansible/ntc-templates/templates"

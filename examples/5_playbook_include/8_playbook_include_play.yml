@@ -1,0 +1,26 @@
+---
+
+- name: Run cfg commands on routers
+  hosts: cisco-routers
+  gather_facts: false
+  connection: local
+
+  tasks:
+
+    - name: Disable services
+      ios_config:
+        lines:
+          - no ip http server
+          - no ip http secure-server
+          - no ip domain lookup
+        provider: "{{ cli }}"
+      notify: save config
+
+    - include: tasks/cisco_ospf_cfg.yml
+    - include: tasks/cisco_vty_cfg.yml
+
+  handlers:
+
+    - include: handlers/cisco_save_cfg.yml
+
+- include: 8_play_to_include.yml

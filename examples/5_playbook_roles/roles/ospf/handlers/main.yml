@@ -1,0 +1,5 @@
+- name: save config
+  ios_command:
+    commands:
+      - write
+    provider: "{{ cli }}"

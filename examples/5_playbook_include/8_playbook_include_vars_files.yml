@@ -1,0 +1,25 @@
+---
+
+- name: Run cfg commands on router
+  hosts: 192.168.100.1
+  gather_facts: false
+  connection: local
+
+  vars_files:
+    - vars/cisco_bgp_general.yml
+
+  tasks:
+
+    - name: Config BGP
+      ios_config:
+        src: templates/bgp.j2
+        provider: "{{ cli }}"
+
+    - name: Show BGP config
+      ios_command:
+        commands: sh run | s ^router bgp
+        provider: "{{ cli }}"
+      register: bgp_cfg
+
+    - name: Debug registered var
+      debug: var=bgp_cfg.stdout_lines

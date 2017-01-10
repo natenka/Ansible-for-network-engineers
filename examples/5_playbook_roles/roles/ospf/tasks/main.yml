@@ -1,0 +1,31 @@
+---
+
+- name: Collect facts
+  ios_facts:
+    gather_subset:
+      - "!hardware"
+    provider: "{{ cli }}"
+
+- name: Set fact ospf_networks
+  set_fact:
+    current_ospf_networks: "{{ ansible_net_config | regex_findall('network (.*) area 0') }}"
+
+#- name: Show var current_ospf_networks
+#  debug: var=current_ospf_networks
+
+- name: Config OSPF
+  ios_config:
+    src: ospf.j2
+    provider: "{{ cli }}"
+  notify: save config
+
+
+#- name: Write OSPF cfg in variable
+#  ios_command:
+#    commands:
+#      - sh run | s ^router ospf
+#    provider: "{{ cli }}"
+#  register: ospf_cfg
+#
+#- name: Show OSPF cfg
+#  debug: var=ospf_cfg.stdout_lines

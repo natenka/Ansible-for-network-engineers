@@ -1,0 +1,17 @@
+---
+
+as: 65000
+network: 120.0.0.0 mask 255.255.252.0
+ttl_security_hops: 3
+send_community: true
+update_source_int: Loopback0
+ibgp_neighbors:
+  - 10.0.0.1
+  - 10.0.0.2
+  - 10.0.0.3
+  - 10.0.0.4
+ebgp_neighbors:
+  - ip: 15.0.0.5
+    as: 500
+  - ip: 26.0.0.6
+    as: 600

@@ -1,0 +1,7 @@
+---
+
+- name: Config ospf
+  ios_config:
+    src: templates/ospf.j2
+    provider: "{{ cli }}"
+  notify: save config
