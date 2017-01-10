@@ -54,7 +54,7 @@ Handlers описываются в своем подразделе playbook - ha
 $ ansible-playbook 8_handlers.yml
 ```
 
-![8_handler](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_handler.png)
+![8_handler](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handler.png)
 
 Обратите внимание, что handler выполняется только один раз.
 
@@ -63,7 +63,7 @@ $ ansible-playbook 8_handlers.yml
 $ ansible-playbook 8_handlers.yml -v
 ```
 
-![8_handlers_verbose](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_handlers_verbose.png)
+![8_handlers_verbose](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handlers_verbose.png)
 
 
 Запуск playbook без изменений:
@@ -71,7 +71,7 @@ $ ansible-playbook 8_handlers.yml -v
 $ ansible-playbook 8_handlers.yml
 ```
 
-![8_handlers_no_change](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_handlers_no_change.png)
+![8_handlers_no_change](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handlers_no_change.png)
 
 Так как в задачах не  нужно выносить изменений, handler также не выполняется.
 

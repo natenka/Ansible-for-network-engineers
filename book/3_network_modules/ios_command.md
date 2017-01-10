@@ -40,7 +40,7 @@
 $ ansible-playbook 2_ios_command.yml
 ```
 
-![ios_command](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/2_ios_command.png)
+![ios_command](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2_ios_command.png)
 
 
 В отличии от использования модуля raw, когда мы используем модуль ios_command, playbook не указывает, что были выполнены изменения.
@@ -82,7 +82,7 @@ Playbook 4a_ios_command.yml:
 $ ansible-playbook 2a_ios_command.yml
 ```
 
-![ios_command](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/2a_ios_command.png)
+![ios_command](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2a_ios_command.png)
 
 Обе команды выполнились на всех устройствах.
 
@@ -105,7 +105,7 @@ $ ansible-playbook 2a_ios_command.yml
 $ ansible-playbook 2_ios_command.yml
 ```
 
-![ios_command](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/2_ios_command-fail.png)
+![ios_command](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2_ios_command-fail.png)
 
 То есть, если задача отработала, значит ошибок при выполнении не было.
 

@@ -47,7 +47,7 @@ ip access-list extended IN_to_OUT
 ```
 $ ansible-playbook 6i_ios_config_replace_line.yml -v
 ```
-![6i_ios_config_replace_line](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6i_ios_config_replace_line.png)
+![6i_ios_config_replace_line](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6i_ios_config_replace_line.png)
 
 
 После этого на маршрутизаторе такой ACL:
@@ -109,7 +109,7 @@ Playbook 6i_ios_config_replace_block.yml:
 ```
 $ ansible-playbook 6i_ios_config_replace_block.yml -v
 ```
-![6i_ios_config_replace_block](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6i_ios_config_replace_block.png)
+![6i_ios_config_replace_block](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6i_ios_config_replace_block.png)
 
 
 В результате на маршрутизаторе такой ACL:

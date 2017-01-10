@@ -76,7 +76,7 @@ Ansible поддерживает такие фильтры (список не п
 $ ansible-playbook 8_playbook_filters_to_nice_yaml.yml
 ```
 
-![8_playbook_filters_to_nice_yaml](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_filters_to_nice_yaml.png)
+![8_playbook_filters_to_nice_yaml](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_filters_to_nice_yaml.png)
 
 Теперь в каталоге all_facts появились такие файлы:
 ```
@@ -365,7 +365,7 @@ interface Tunnel {{ tun_num }}
 $ ansible-playbook 8_playbook_filters_regex.yml
 ```
 
-![8_playbook_filters_regex](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_filters_regex.png)
+![8_playbook_filters_regex](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_filters_regex.png)
 
 > На маршрутизаторе 192.168.100.1 специально созданы несколько туннелей. А на маршрутизаторе 192.168.100.2 нет ни одного туннеля.
 

@@ -41,12 +41,12 @@ Playbook 6g_ios_config_before.yml:
 ```
 $ ansible-playbook 6g_ios_config_before.yml -v
 ```
-![6g_ios_config_before](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6g_ios_config_before.png)
+![6g_ios_config_before](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6g_ios_config_before.png)
 
 
 Запуск playbook без изменений (команда в списке before не выполняется):
 ```
 $ ansible-playbook 6g_ios_config_before.yml -v
 ```
-![6g_ios_config_before_no_updates](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6g_ios_config_before_no_updates.png)
+![6g_ios_config_before_no_updates](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6g_ios_config_before_no_updates.png)
 

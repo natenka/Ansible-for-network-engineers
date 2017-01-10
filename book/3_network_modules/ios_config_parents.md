@@ -36,7 +36,7 @@ line vty 0 4
 $ ansible-playbook 6a_ios_config_parents_basic.yml
 ```
 
-![6a_ios_config_parents_basic](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6a_ios_config_parents_basic.png)
+![6a_ios_config_parents_basic](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6a_ios_config_parents_basic.png)
 
 
 Если нам нужно выполнить команду в нескольких вложенных режимах, мы указываем подрежимы в списке parents.

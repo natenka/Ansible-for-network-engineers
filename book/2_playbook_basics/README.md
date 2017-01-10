@@ -62,14 +62,14 @@ Playbook описываются в формате YAML.
 
 И тот же playbook с отображением элементов:
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/playbook.png)
+![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/playbook.png)
 
 Теперь попробуем запустить playbook:
 ```
 $ ansible-playbook 1_show_commands_with_raw.yml
 ```
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/playbook_execution.png)
+![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/playbook_execution.png)
 
 > **Note** Обратите внимание, что для запуска playbook используется другая команда. Для ad-hoc команды, мы использовали команду ansible. А для playbook - ansible-playbook.
 
@@ -78,7 +78,7 @@ $ ansible-playbook 1_show_commands_with_raw.yml
 $ ansible-playbook 1_show_commands_with_raw.yml -v
 ```
 
-[Verbose playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/playbook-verbose.png)
+[Verbose playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/playbook-verbose.png)
 
 В следующих разделах мы научимся отображать эти данные в нормальном формате и посмотрим, что с ними можно делать.
 
@@ -95,7 +95,7 @@ $ ansible-playbook 1_show_commands_with_raw.yml -v
 $ ansible-playbook 1_show_commands_with_raw.yml
 ```
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/playbook_failed_execution.png)
+![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/playbook_failed_execution.png)
 
 Обратите внимание на ошибку в выполнении первой задачи для маршрутизатора 192.168.100.1.
 
@@ -124,7 +124,7 @@ to retry, use: --limit @/home/nata/pyneng_course/chapter15/1_show_commands_with_
 $ ansible-playbook 1_show_commands_with_raw.yml --limit @/home/nata/pyneng_course/chapter15/1_show_commands_with_raw.retry
 ```
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/playbook-retry.png)
+![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/playbook-retry.png)
 
 Ansible взял список устройств, которые перечислены в файле retry и выполнил playbook только для них.
 

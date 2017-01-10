@@ -12,7 +12,7 @@
 $ ansible-playbook 6с_ios_config_save.yml
 ```
 
-![6c_ios_config_save](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6c_ios_config_save.png)
+![6c_ios_config_save](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6c_ios_config_save.png)
 
 Но, мы можем самостоятельно сделать сохранение, используя модуль ios_command (а позже мы посмотрим как сделать это же, с помощью параметра after).
 
@@ -51,5 +51,5 @@ $ ansible-playbook 6с_ios_config_save.yml
 $ ansible-playbook 6c_ios_config_save.yml
 ```
 
-![6c_ios_config_save](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6c_ios_config_save_2.png)
+![6c_ios_config_save](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6c_ios_config_save_2.png)
 

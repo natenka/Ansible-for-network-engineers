@@ -27,7 +27,7 @@
 $ ansible-playbook 6_ios_config_lines.yml
 ```
 
-![6_ios_config_lines](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6_ios_config_lines.png)
+![6_ios_config_lines](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6_ios_config_lines.png)
 
 Какие команды Ansible выполняет:
 * terminal length 0
@@ -44,7 +44,7 @@ $ ansible-playbook 6_ios_config_lines.yml
 $ ansible-playbook 6_ios_config_lines.yml
 ```
 
-![6_ios_config_lines](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6_ios_config_lines_2.png)
+![6_ios_config_lines](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6_ios_config_lines_2.png)
 
 > **Caution** Обязательно пишите команды полностью, а не сокращенно. И обращайте внимание, что, для некоторых команд, IOS сам добавляет параметры. Если писать команду не в том виде, в котором она реально видна в конфигурационном файле, модуль не будет идемпотентен. Он будет всё время считать, что команды нет и вносить изменения каждый раз. 
 
@@ -74,4 +74,4 @@ $ ansible-playbook 6_ios_config_lines.yml
 $ ansible-playbook 6_ios_config_mult_lines.yml
 ```
 
-![6_ios_config_mult_lines](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6_ios_config_mult_lines.png)
+![6_ios_config_mult_lines](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6_ios_config_mult_lines.png)

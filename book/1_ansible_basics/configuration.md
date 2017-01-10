@@ -108,7 +108,7 @@ host_key_checking=False
 $ ansible cisco-routers -m raw -a "sh ip int br"
 ```
 
-![ad-hoc](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/ad-hoc.png)
+![ad-hoc](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/ad-hoc.png)
 
 Обратите внимание на строки:
 ```

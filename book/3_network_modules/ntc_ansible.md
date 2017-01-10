@@ -94,7 +94,7 @@ pip install ntc-ansible
 $ ansible-playbook 5_ntc-ansible.yml
 ```
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/7_ntc_ansible.png)
+![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/7_ntc_ansible.png)
 
 
 В переменной response мы получили структурированный вывод в виде списка словарей.
@@ -152,7 +152,7 @@ Start
 $ ansible-playbook 5_ntc-ansible_compare.yml
 ```
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/7a_ntc_ansible_save.png)
+![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/7a_ntc_ansible_save.png)
 
 
 В результате, в каталоге all_facts повяляются соответствующие файлы для каждого маршрутизатора.

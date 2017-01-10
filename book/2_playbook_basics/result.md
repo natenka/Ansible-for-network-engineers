@@ -20,7 +20,7 @@
 ansible-playbook 1_show_commands_with_raw.yml -v
 ```
 
-![Verbose playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/playbook-verbose.png)
+![Verbose playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/playbook-verbose.png)
 
 При увеличении количества букв v в флаге, вывод становится более подробным.
 Попробуйте вызывать этот же playbook и добавлять к флагу буквы v (5 и больше показывают одинаковый вывод).
@@ -90,7 +90,7 @@ ansible-playbook 1_show_commands_with_raw.yml -v
 $ ansible-playbook 2_register_vars.yml
 ```
 
-![Verbose playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/2_register_vars.png)
+![Verbose playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2_register_vars.png)
 
 
 ### register, debug, when
@@ -128,7 +128,7 @@ $ ansible-playbook 2_register_vars.yml
 $ ansible-playbook 3_register_debug_when.yml
 ```
 
-![Verbose playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/3_register_debug_when_skip.png)
+![Verbose playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/3_register_debug_when_skip.png)
 
 Обратите внимание на сообщения skipping - это означает, что задача не выполнялась для указанных устройств.
 Не выполнилась она потому, что условие в when не было выполнено.
@@ -158,7 +158,7 @@ $ ansible-playbook 3_register_debug_when.yml
 $ ansible-playbook 3_register_debug_when.yml
 ```
 
-![Verbose playbook](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/3_register_debug_when.png)
+![Verbose playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/3_register_debug_when.png)
 
 Теперь мы видим сообщение, которое было указано в задаче для модуля debug, так как команда была с ошибкой.
 

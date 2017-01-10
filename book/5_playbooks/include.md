@@ -105,7 +105,7 @@ Playbook 8_playbook_include_tasks.yml:
 $ ansible-playbook 8_playbook_include_tasks.yml
 ```
 
-![8_playbook_include_tasks](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_include_tasks.png)
+![8_playbook_include_tasks](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_include_tasks.png)
 
 
 При выполнении playbook, задачи которые мы добавили через include работают так же, как если бы они находились в самом playbook.
@@ -223,7 +223,7 @@ Include можно использовать и в разделе handlers.
 ```
 $ ansible-playbook 8_playbook_include_handlers.yml -v
 ```
-![8_playbook_include_handlers](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_include_handlers.png)
+![8_playbook_include_handlers](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_include_handlers.png)
 
 Playbook выполняет handler, как-будто он находится в playbook.
 Таким образом можно легко добавлять handler в любой playbook.
@@ -291,7 +291,7 @@ Playbook выполняет handler, как-будто он находится �
 $ ansible-playbook 8_playbook_include_play.yml
 ```
 
-![8_playbook_include_play](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_include_play.png)
+![8_playbook_include_play](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_include_play.png)
 
 
 ### Vars include
@@ -383,7 +383,7 @@ router bgp {{ as }}
 $ ansible-playbook 8_playbook_include_vars.yml
 ```
 
-![8_playbook_include_vars](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_include_vars.png)
+![8_playbook_include_vars](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_include_vars.png)
 
 
 > Модуль include_vars поддерживает большое количество вариантов использования. Подробнее об этом можно почитать в [документации модуля](http://docs.ansible.com/ansible/include_vars_module.html).
@@ -428,4 +428,4 @@ $ ansible-playbook 8_playbook_include_vars.yml
 $ ansible-playbook 8_playbook_include_vars_files.yml
 ```
 
-![8_playbook_include_vars_files](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/8_playbook_include_vars_files.png)
+![8_playbook_include_vars_files](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_include_vars_files.png)

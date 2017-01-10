@@ -36,7 +36,7 @@ ip access-list extended IN_to_OUT
 ```
 $ ansible-playbook 6j_ios_config_src.yml -v
 ```
-![6j_ios_config_src](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6j_ios_config_src.png)
+![6j_ios_config_src](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src.png)
 
 Неприятная особенность параметра src в том, что не видно какие изменения были внесены.
 Но, возможно, в следующих версиях Ansible это будет исправлено.
@@ -55,7 +55,7 @@ ip access-list extended IN_to_OUT
 ```
 $ ansible-playbook 6j_ios_config_src.yml -v
 ```
-![6j_ios_config_src_2](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6j_ios_config_src_2.png)
+![6j_ios_config_src_2](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_2.png)
 
 
 ### Шаблон Jinja2
@@ -144,7 +144,7 @@ ospf_ints:
 ```
 $ ansible-playbook 6j_ios_config_src_jinja.yml -v
 ```
-![6j_ios_config_src_jinja](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6j_ios_config_src_jinja.png)
+![6j_ios_config_src_jinja](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_jinja.png)
 
 Теперь на всех маршрутизаторах настроен OSPF:
 ```
@@ -180,7 +180,7 @@ router ospf 1
 ```
 $ ansible-playbook 6j_ios_config_src_jinja.yml -v
 ```
-![6j_ios_config_src_jinja_2](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6j_ios_config_src_jinja_2.png)
+![6j_ios_config_src_jinja_2](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_jinja_2.png)
 
 ### Совмещение с другими параметрами
 

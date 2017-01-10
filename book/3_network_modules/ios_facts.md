@@ -82,7 +82,7 @@
 $ ansible-playbook 5_ios_facts.yml
 ```
 
-![5_ios_facts](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/5_ios_facts.png)
+![5_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5_ios_facts.png)
 
 
 
@@ -92,7 +92,7 @@ $ ansible-playbook 5_ios_facts.yml -v
 Using /home/nata/pyneng_course/chapter15/ansible.cfg as config file
 ```
 
-![5_ios_facts](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/5_ios_facts_verbose.png)
+![5_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5_ios_facts_verbose.png)
 
 ### Сохранение фактов
 
@@ -152,7 +152,7 @@ Playbook 5a_ios_facts.yml собирает всю информацию об ус
 $ ansible-playbook 5a_ios_facts.yml
 ```
 
-![5a_ios_facts](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/5a_ios_facts.png)
+![5a_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5a_ios_facts.png)
 
 После этого, в каталоге all_facts находятся такие файлы:
 ```
@@ -188,7 +188,7 @@ $ ansible-playbook 5a_ios_facts.yml
 $ ansible-playbook 5a_ios_facts.yml
 ```
 
-![5a_ios_facts](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/5a_ios_facts_no_change.png)
+![5a_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5a_ios_facts_no_change.png)
 
 ### Изменения с опцией --diff
 
@@ -200,7 +200,7 @@ $ ansible-playbook 5a_ios_facts.yml
 $ ansible-playbook 5a_ios_facts.yml --diff --limit=192.168.100.1
 ```
 
-![5a_ios_facts](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/5a_ios_facts_diff.png)
+![5a_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5a_ios_facts_diff.png)
 
 Таким образом мы не только знаем, что были внесены изменения, но и знаем на каком устройстве и какие именно.
 

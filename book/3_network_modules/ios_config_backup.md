@@ -29,7 +29,7 @@ Playbook 6d_ios_config_backup.yml:
 ```
 $ ansible-playbook 6d_ios_config_backup.yml -v
 ```
-![6d_ios_config_backup](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/6d_ios_config_backup.png)
+![6d_ios_config_backup](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6d_ios_config_backup.png)
 
 
 В каталоге backup файлы такого вида (при каждом запуске playbook они перезаписываются):

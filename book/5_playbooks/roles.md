@@ -185,7 +185,7 @@
 $ ansible-playbook cfg_initial.yml
 ```
 
-![cfg_initial](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/cfg_initial.png)
+![cfg_initial](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/cfg_initial.png)
 
 Обратите внимание, что теперь, когда задачи выполняются, перед именем задачи написано имя роли:
 ```
@@ -306,7 +306,7 @@ Ethernet0/1      192.168.200.1   YES NVRAM  up          up
 $ ansible-playbook cfg_ospf.yml
 ```
 
-![cfg_ospf](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/cfg_ospf.png)
+![cfg_ospf](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/cfg_ospf.png)
 
 
 Обратите внимание, что до выполнения конфигурации было 4 команды network (мы их видим по содержимому переменной current_ospf_networks):
