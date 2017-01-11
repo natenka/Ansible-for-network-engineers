@@ -44,15 +44,6 @@ $ ansible cisco-routers -i myhosts -m raw -a "sh ip int br" -u cisco --ask-pass
 Результат выполнения будет таким:
 ```
 $ ansible cisco-routers -i myhosts -m raw -a "sh ip int br" -u cisco --ask-pass
-SSH password:
-192.168.100.1 | FAILED | rc=0 >>
-to use the 'ssh' connection type with passwords, you must install the sshpass program
-
-192.168.100.2 | FAILED | rc=0 >>
-to use the 'ssh' connection type with passwords, you must install the sshpass program
-
-192.168.100.3 | FAILED | rc=0 >>
-to use the 'ssh' connection type with passwords, you must install the sshpass program
 ```
 
 ![ad-hoc-fail](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2_ad-hoc-fail.png)

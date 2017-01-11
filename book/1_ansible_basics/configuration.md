@@ -80,16 +80,9 @@ gathering = explicit
 Теперь, если мы запустим ad-hoc команду, мы получим такой вывод:
 ```
 $ ansible cisco-routers -m raw -a "sh ip int br"
-SSH password:
-192.168.100.1 | FAILED | rc=0 >>
-Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host.
-
-192.168.100.2 | FAILED | rc=0 >>
-Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host.
-
-192.168.100.3 | FAILED | rc=0 >>
-Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host.
 ```
+
+![host_key_checking](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/host_key_checking.png)
 
 Теперь добавим в конфигурационный файл параметр host_key_checking:
 ```
@@ -108,7 +101,7 @@ host_key_checking=False
 $ ansible cisco-routers -m raw -a "sh ip int br"
 ```
 
-![ad-hoc](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/ad-hoc.png)
+![host_key_checking2](https://raw.githubusercontent.com/natenka/PyNEng/master/book/chapter15/images/host_key_checking2.png)
 
 Обратите внимание на строки:
 ```
