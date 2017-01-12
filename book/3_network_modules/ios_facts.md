@@ -58,6 +58,21 @@
     provider: "{{ cli }}"
 ```
 
+Ansible собирает такие факты:
+* ansible_net_all_ipv4_addresses - список IPv4 адресов на устройстве
+* ansible_net_all_ipv6_addresses - Список IPv6 адресов на устройстве
+* ansible_net_config - конфигурация (для Cisco sh run)
+* ansible_net_filesystems - файловая система устройства
+* ansible_net_gather_subset - какая информация собирается (hardware, default, interfaces, config)
+* ansible_net_hostname - имя устройства
+* ansible_net_image - имя и путь ОС
+* ansible_net_interfaces - словарь со всеми интерфесами устройства. Имена интерфейсов - ключи, а данные - параметры каждого интерфейса
+* ansible_net_memfree_mb - сколько свободной памяти на устройстве
+* ansible_net_memtotal_mb - сколько памяти на устройстве
+* ansible_net_model - модель устройства
+* ansible_net_serialnum - серийный номер
+* ansible_net_version - версия IOS
+
 ### Использование модуля
 
 Пример playbook 5_ios_facts.yml с использованием модуля ios_facts (собираются все факты):
@@ -93,6 +108,38 @@ Using /home/nata/pyneng_course/chapter15/ansible.cfg as config file
 ```
 
 ![5_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5_ios_facts_verbose.png)
+
+После того, как Ansible собрал факты с устройства, все факты доступны как переменные в playbook, шаблонах и т.д.
+
+Например, мы можем отобразить содержимое факта с помощью debug (playbook 5_ios_facts_debug.yml):
+```yml
+---
+
+- name: Collect IOS facts
+  hosts: 192.168.100.1
+  gather_facts: false
+  connection: local
+
+  tasks:
+
+    - name: Facts
+      ios_facts:
+        gather_subset: all
+        provider: "{{ cli }}"
+
+    - name: Show ansible_net_all_ipv4_addresses fact
+      debug: var=ansible_net_all_ipv4_addresses
+
+    - name: Show ansible_net_interfaces fact
+      debug: var=ansible_net_interfaces['Ethernet0/0']
+```
+
+Результат выполнения playbook:
+```
+$ ansible-playbook 5_ios_facts_debug.yml
+```
+
+![5_ios_facts_debug](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5_ios_facts_debug.png)
 
 ### Сохранение фактов
 
