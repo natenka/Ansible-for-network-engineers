@@ -35,7 +35,7 @@
  * show lldp
  * show lldp neighbors detail
 
-Если нужно указать, что нужно собрать все факты:
+Если нужно собрать все факты:
 ```
 - ios_facts:
     gather_subset: all
