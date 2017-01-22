@@ -13,6 +13,12 @@
         provider: "{{ cli }}"
       register: ios_facts_result
 
+    #- name: Create all_facts dir
+    #  file:
+    #    path: ./all_facts/
+    #    state: directory
+    #    mode: 0755
+
     - name: Copy facts to files
       copy:
         content: "{{ ios_facts_result | to_nice_json }}"

@@ -1,3 +1,4 @@
+{% raw %}
 ## Модуль ios_facts
 
 Модуль ios_facts - собирает информацию с устройств под управлением IOS.
@@ -17,7 +18,7 @@
 В модуле можно указывать какие параметры собирать - можно собирать всю информацию, а можно только подмножество.
 По умолчанию, модуль собирает всю информацию, кроме конфигурационного файла.
 
-Какую информацию собирать, указывается в параметре gather_subset.
+Какую информацию собирать, указывается в параметре __gather_subset__.
 Поддерживаются такие варианты (указаны также команды, которые будут выполняться на устройстве):
 * all
 * hardware
@@ -60,13 +61,13 @@
 
 Ansible собирает такие факты:
 * ansible_net_all_ipv4_addresses - список IPv4 адресов на устройстве
-* ansible_net_all_ipv6_addresses - Список IPv6 адресов на устройстве
+* ansible_net_all_ipv6_addresses - список IPv6 адресов на устройстве
 * ansible_net_config - конфигурация (для Cisco sh run)
 * ansible_net_filesystems - файловая система устройства
 * ansible_net_gather_subset - какая информация собирается (hardware, default, interfaces, config)
 * ansible_net_hostname - имя устройства
 * ansible_net_image - имя и путь ОС
-* ansible_net_interfaces - словарь со всеми интерфесами устройства. Имена интерфейсов - ключи, а данные - параметры каждого интерфейса
+* ansible_net_interfaces - словарь со всеми интерфейсами устройства. Имена интерфейсов - ключи, а данные - параметры каждого интерфейса
 * ansible_net_memfree_mb - сколько свободной памяти на устройстве
 * ansible_net_memtotal_mb - сколько памяти на устройстве
 * ansible_net_model - модель устройства
@@ -75,7 +76,7 @@ Ansible собирает такие факты:
 
 ### Использование модуля
 
-Пример playbook 5_ios_facts.yml с использованием модуля ios_facts (собираются все факты):
+Пример playbook 1_ios_facts.yml с использованием модуля ios_facts (собираются все факты):
 ```
 ---
 
@@ -94,7 +95,7 @@ Ansible собирает такие факты:
 
 
 ```
-$ ansible-playbook 5_ios_facts.yml
+$ ansible-playbook 1_ios_facts.yml
 ```
 
 ![5_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5_ios_facts.png)
@@ -103,7 +104,7 @@ $ ansible-playbook 5_ios_facts.yml
 
 Для того, чтобы посмотреть, какие именно факты собираются с устройства, можно добавить флаг -v (информация сокращена):
 ```
-$ ansible-playbook 5_ios_facts.yml -v
+$ ansible-playbook 1_ios_facts.yml -v
 Using /home/nata/pyneng_course/chapter15/ansible.cfg as config file
 ```
 
@@ -111,7 +112,7 @@ Using /home/nata/pyneng_course/chapter15/ansible.cfg as config file
 
 После того, как Ansible собрал факты с устройства, все факты доступны как переменные в playbook, шаблонах и т.д.
 
-Например, мы можем отобразить содержимое факта с помощью debug (playbook 5_ios_facts_debug.yml):
+Например, мы можем отобразить содержимое факта с помощью debug (playbook 2_ios_facts_debug.yml):
 ```yml
 ---
 
@@ -136,7 +137,7 @@ Using /home/nata/pyneng_course/chapter15/ansible.cfg as config file
 
 Результат выполнения playbook:
 ```
-$ ansible-playbook 5_ios_facts_debug.yml
+$ ansible-playbook 2_ios_facts_debug.yml
 ```
 
 ![5_ios_facts_debug](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5_ios_facts_debug.png)
@@ -148,7 +149,7 @@ $ ansible-playbook 5_ios_facts_debug.yml
 
 Для этого мы будем использовать модуль copy.
 
-Playbook 5a_ios_facts.yml собирает всю информацию об устройствах и записывает в разные файлы (создайте каталог all_facts перед запуском playbook):
+Playbook 3_ios_facts.yml собирает всю информацию об устройствах и записывает в разные файлы (создайте каталог all_facts перед запуском playbook или раскомментируйте задачу Create all_facts dir и Ansible создаст каталог сам):
 ```
 ---
 
@@ -165,6 +166,12 @@ Playbook 5a_ios_facts.yml собирает всю информацию об ус
         provider: "{{ cli }}"
       register: ios_facts_result
 
+    #- name: Create all_facts dir
+    #  file:
+    #    path: ./all_facts/
+    #    state: directory
+    #    mode: 0755
+
     - name: Copy facts to files
       copy:
         content: "{{ ios_facts_result | to_nice_json }}"
@@ -172,7 +179,7 @@ Playbook 5a_ios_facts.yml собирает всю информацию об ус
 ```
 
 Модуль copy позволяет копировать файлы с управляющего хоста (на котором установлен Ansible) на удаленный хост.
-Но, так как в этом случае, мы указываем параметр connection: local, файлы будут скопированы на локальный хост.
+Но, так как в этом случае, мы указываем параметр ```connection: local```, файлы будут скопированы на локальный хост.
 
 Чаще всего, модуль copy используется таким образом:
 ```
@@ -182,7 +189,7 @@ Playbook 5a_ios_facts.yml собирает всю информацию об ус
 ```
 
 Но, в нашем случае, нет исходного файла, содержимое которого нужно скопировать.
-Вместо этого есть содержимое переменной ios_facts_result.
+Вместо этого, есть содержимое переменной ios_facts_result.
 Его нам нужно перенести в файл all_facts/{{inventory_hostname}}_facts.json.
 
 Для того чтобы перенести содержимое переменной в файл, в модуле copy, вместо src, используется параметр content.
@@ -196,7 +203,7 @@ Playbook 5a_ios_facts.yml собирает всю информацию об ус
 
 Результат выполнения playbook:
 ```
-$ ansible-playbook 5a_ios_facts.yml
+$ ansible-playbook 3_ios_facts.yml
 ```
 
 ![5a_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5a_ios_facts.png)
@@ -232,7 +239,7 @@ $ ansible-playbook 5a_ios_facts.yml
 
 Повторный запуск playbook (без изменений):
 ```
-$ ansible-playbook 5a_ios_facts.yml
+$ ansible-playbook 3_ios_facts.yml
 ```
 
 ![5a_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5a_ios_facts_no_change.png)
@@ -244,10 +251,11 @@ $ ansible-playbook 5a_ios_facts.yml
 
 Пример запуска playbook с опцией --diff и с внесенными изменениями на одном из устройств:
 ```
-$ ansible-playbook 5a_ios_facts.yml --diff --limit=192.168.100.1
+$ ansible-playbook 3_ios_facts.yml --diff --limit=192.168.100.1
 ```
 
 ![5a_ios_facts](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/5a_ios_facts_diff.png)
 
 Таким образом мы не только знаем, что были внесены изменения, но и знаем на каком устройстве и какие именно.
 
+{% endraw %}

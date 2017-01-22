@@ -7,7 +7,7 @@
 
 Когда мы отправляем команду на устройство, модуль самостоятельно аутентифицируется по SSH, переходит в режим enable и дает команду ```terminal length 0```, чтобы вывод команд show отражался полностью, а не постранично.
 
-Посмотрим на простой пример использования модуля ios_command (playbook 4_ios_command.yml):
+Посмотрим на простой пример использования модуля ios_command (playbook 1_ios_command.yml):
 ```
 ---
 
@@ -37,7 +37,7 @@
 
 Попробуем запустить playbook:
 ```
-$ ansible-playbook 2_ios_command.yml
+$ ansible-playbook 1_ios_command.yml
 ```
 
 ![ios_command](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2_ios_command.png)
@@ -51,7 +51,7 @@ $ ansible-playbook 2_ios_command.yml
 Модуль ios_command позволяет выполнять несколько команд.
 Попробуем выполнить несколько команд и получить их вывод.
 
-Playbook 4a_ios_command.yml:
+Playbook 2_ios_command.yml:
 ```
 ---
 
@@ -79,7 +79,7 @@ Playbook 4a_ios_command.yml:
 
 Посмотрим на результат выполнения playbook (вывод сокращен):
 ```
-$ ansible-playbook 2a_ios_command.yml
+$ ansible-playbook 2_ios_command.yml
 ```
 
 ![ios_command](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/2a_ios_command.png)
