@@ -1,3 +1,4 @@
+{% raw %}
 ## Модуль ios_command
 
 Модуль ios_command - отправляет команду на устройство под управлением IOS и возвращает результат выполнения команды.
@@ -114,3 +115,4 @@ $ ansible-playbook 2_ios_command.yml
 * Incomplete command
 
 
+{% endraw %}
