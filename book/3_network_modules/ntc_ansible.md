@@ -1,3 +1,4 @@
+{% raw %}
 # ntc-ansible
 
 __ntc-ansible__ - это модуль для работы с сетевым оборудованием, который не только выполняет команды на оборудовании, но и обрабатывает вывод команд и преобразует с помощью [TextFSM](https://natenka.gitbooks.io/pyneng/content/book/chapter14/).
@@ -45,7 +46,7 @@ pip install ntc-ansible
 
 > Если при установке возникнут проблемы, посмотрите другие варианты установки в [репозитории проекта](https://github.com/networktocode/ntc-ansible). 
 
-Так как в текущей версии Ansible уже есть модули, которые работают с сетевыми оборудованием и позволяют выполнять команды, из всех возможностей ntc-ansible наиболее полезной будет отправка команд show и получение структурированного вывода.
+Так как в текущей версии Ansible уже есть модули, которые работают с сетевым оборудованием и позволяют выполнять команды, из всех возможностей ntc-ansible, наиболее полезной будет отправка команд show и получение структурированного вывода.
 За это отвечает модуль ntc_show_command.
 
 ## ntc_show_command
@@ -54,16 +55,16 @@ pip install ntc-ansible
 Преобразование будет выполняться в том случае, если в файле index была найдена команда и для команды был найден шаблон.
 
 Как и с предыдущими сетевыми модулями, в ntc-ansible нужно указывать ряд параметров для подключения:
-* connection - тут возможны два вараинта: ssh (подключение netmiko) или offline (чтение из фала для тестовых целей)
-* platform - платформа, котора ясуществует в index файле (library/ntc-ansible/ntc-templates/templates/index)
-* command - команда, которую нужно выполнить на устройстве
-* host - IP-адрес или имя устройства
-* username - имя пользователя
-* password - пароль
-* template_dir - путь к каталогу в котором находятся шаблоны (в текущем варианте установки они находятся в каталоге library/ntc-ansible/ntc-templates/templates
+* __connection__ - тут возможны два варианта: ssh (подключение netmiko) или offline (чтение из файла для тестовых целей)
+* __platform__ - платформа, которая существует в index файле (library/ntc-ansible/ntc-templates/templates/index)
+* __command__ - команда, которую нужно выполнить на устройстве
+* __host__ - IP-адрес или имя устройства
+* __username__ - имя пользователя
+* __password__ - пароль
+* __template_dir__ - путь к каталогу в котором находятся шаблоны (в текущем варианте установки они находятся в каталоге library/ntc-ansible/ntc-templates/templates
 
 
-Посмотрим на пример playbook ntc-ansible/7_ntc_ansible.yml:
+Посмотрим на пример playbook 1_ntc_ansible.yml:
 ```
 ---
 
@@ -91,7 +92,7 @@ pip install ntc-ansible
 
 Результат выполнения playbook:
 ```
-$ ansible-playbook 5_ntc-ansible.yml
+$ ansible-playbook 1_ntc-ansible.yml
 ```
 
 ![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/7_ntc_ansible.png)
@@ -119,7 +120,7 @@ Start
 ### Сохранение результатов выполнения команды
 Для того, чтобы сохранить вывод, можно использовать тот же прием, который мы использовали для модуля ios_facts.
 
-Пример playbook ntc-ansible/7a_ntc_ansible_save.yml с сохранением результатов команды:
+Пример playbook 2_ntc_ansible_save.yml с сохранением результатов команды:
 ```
 ---
 
@@ -149,7 +150,7 @@ Start
 
 Результат выполнения:
 ```
-$ ansible-playbook 5_ntc-ansible_compare.yml
+$ ansible-playbook 2_ntc-ansible_save.yml
 ```
 
 ![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/7a_ntc_ansible_save.png)
@@ -250,4 +251,6 @@ cisco_ios_show_aliases.template,  .*, cisco_ios, sh[[ow]] alia[[ses]]
 ...
 ```
 
-Синтаксис шаблонов и файла index описаны в разделе [TextFSM](https://natenka.gitbooks.io/pyneng/content/book/chapter14/).
+Синтаксис шаблонов и файла index описаны в разделе [TextFSM](https://natenka.gitbooks.io/pyneng/content/book/chapter14/) курса [Python для сетевых инженеров](https://natenka.gitbooks.io/pyneng/content/).
+
+{% endraw %}

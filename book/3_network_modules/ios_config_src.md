@@ -1,3 +1,4 @@
+{% raw %}
 ## src
 
 Параметр __src__ позволяет указывать путь к файлу в котором находится конфигурация или шаблон конфигурации, которую нужно загрузить на устройство.
@@ -6,7 +7,7 @@
 
 ### Конфигурация
 
-Посмотрим на пример playbook 6j_ios_config_src.yml, который использует параметр src:
+Посмотрим на пример playbook 11_ios_config_src.yml, который использует параметр src:
 ```yml
 ---
 
@@ -34,7 +35,7 @@ ip access-list extended IN_to_OUT
 
 Удаляем на маршрутизаторе этот ACL, если он остался с прошлых разделов, и запускаем playbook:
 ```
-$ ansible-playbook 6j_ios_config_src.yml -v
+$ ansible-playbook 11_ios_config_src.yml -v
 ```
 ![6j_ios_config_src](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src.png)
 
@@ -53,7 +54,7 @@ ip access-list extended IN_to_OUT
 
 Если запустить playbook ещё раз, но никаких изменений не будет, так как этот параметр также идемпотентен:
 ```
-$ ansible-playbook 6j_ios_config_src.yml -v
+$ ansible-playbook 11_ios_config_src.yml -v
 ```
 ![6j_ios_config_src_2](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_2.png)
 
@@ -80,7 +81,7 @@ router ospf 1
 Настраивать OSPF мы будем на трёх маршрутизаторах, соответственно, нам нужно иметь возможность использовать разные значения переменных для разных устройств.
 Именно для таких задач и нужны файлы с переменными в каталоге host_vars.
 
-В каталоге host_vars нужно создать файлы такие файлы (если они ещё не созданы):
+В каталоге host_vars нужно создать такие файлы (если они ещё не созданы):
 
 Файл host_vars/192.168.100.1:
 ```
@@ -122,7 +123,7 @@ ospf_ints:
 ```
 
 
-Теперь мы можем создавать playbook 6j_ios_config_src_jinja.yml:
+Теперь мы можем создавать playbook 11_ios_config_src_jinja.yml:
 ```yml
 ---
 
@@ -142,7 +143,7 @@ ospf_ints:
 Так как Ansible сам найдет переменные в каталоге host_vars, нам не нужно никак дополнительно их указывать.
 Можно сразу запускать playbook:
 ```
-$ ansible-playbook 6j_ios_config_src_jinja.yml -v
+$ ansible-playbook 11_ios_config_src_jinja.yml -v
 ```
 ![6j_ios_config_src_jinja](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_jinja.png)
 
@@ -178,7 +179,7 @@ router ospf 1
 
 Если запустить playbook ещё раз, но никаких изменений не будет:
 ```
-$ ansible-playbook 6j_ios_config_src_jinja.yml -v
+$ ansible-playbook 11_ios_config_src_jinja.yml -v
 ```
 ![6j_ios_config_src_jinja_2](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_jinja_2.png)
 
@@ -189,3 +190,5 @@ $ ansible-playbook 6j_ios_config_src_jinja.yml -v
 * config
 * defaults
 * save (но у самого save в Ansible 2.2 проблемы с работой) 
+
+{% endraw %}

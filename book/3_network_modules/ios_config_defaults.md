@@ -1,6 +1,7 @@
+{% raw %}
 ## defaults
 
-Параметр __defaults__ указывает нужно ли собираться всю информацию с устройства, в том числе и значения по умолчанию.
+Параметр __defaults__ указывает нужно ли собирать всю информацию с устройства, в том числе и значения по умолчанию.
 Если включить этот параметр, то модуль будет собирать текущую кофигурацию с помощью команды sh run all.
 По умолчанию этот параметр отключен и конфигурация проверяется командой sh run.
 
@@ -12,7 +13,7 @@
 Если команд нет, то соответствующая задача выполняется.
 
 
-В такой варианте playbook 6e_ios_config_defaults.yml каждый раз будут вноситься изменения (попробуйте самостоятельно):
+В таком варианте playbook 6_ios_config_defaults.yml каждый раз будут вноситься изменения (попробуйте самостоятельно):
 ```yml
 ---
 
@@ -33,7 +34,7 @@
         provider: "{{ cli }}"
 ```
 
-Если же мы добавим параметр defaults: yes, изменения уже не будут внесены, если не хватало только команды ip mtu 1500 (playbook 6e_ios_config_defaults.yml):
+Если же мы добавим параметр defaults: yes, изменения уже не будут внесены, если не хватало только команды ip mtu 1500 (playbook 6_ios_config_defaults.yml):
 ```
 ---
 
@@ -57,7 +58,9 @@
 
 Запуск playbook:
 ```
-$ ansible-playbook 6e_ios_config_defaults.yml
+$ ansible-playbook 6_ios_config_defaults.yml
 ```
 
 ![6e_ios_config_default](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6e_ios_config_defaults.png)
+
+{% endraw %}

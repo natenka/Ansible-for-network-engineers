@@ -1,7 +1,8 @@
+{% raw %}
 ## Отображение обновлений
 
 Попробуем сделать playbook, который не только отправляет команды, но и показывает какие именно изменения были сделаны.
-Сделаем это на примере  playbook 6a_ios_config_parents_basic.yml.
+Сделаем это на примере playbook 2_ios_config_parents_basic.yml.
 ```yml
 ---
 
@@ -28,7 +29,7 @@
 
 Для начала, попробуем вывести изменения с помощью опции verbose:
 ```
-$ ansible-playbook 6a_ios_config_parents_basic.yml -v
+$ ansible-playbook 2_ios_config_parents_basic.yml -v
 ```
 
 ![6a_ios_config_parents_basic](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6a_ios_config_parents_basic_verbose.png)
@@ -42,7 +43,7 @@ $ ansible-playbook 6a_ios_config_parents_basic.yml -v
 И, хотя мы можем пользоваться таким вариантом, чтобы отобразить изменения, было бы удобней, чтобы информация отображалась только для тех устройств, для которых произошли изменения.
 А в случае с режимом verbose, мы видим информацию обо всех устройствах.
 
-Сделаем новый playbook 6b_ios_config_debug.yml на основе 6a_ios_config_parents_basic.yml таким образом:
+Сделаем новый playbook 3_ios_config_debug.yml на основе 2_ios_config_parents_basic.yml таким образом:
 ```
 ---
 
@@ -77,17 +78,18 @@ $ ansible-playbook 6a_ios_config_parents_basic.yml -v
 
 Если запустить повторно playbook, когда изменений не было, задача Show config updates, пропускается:
 ```
-$ ansible-playbook 6b_ios_config_debug.yml
+$ ansible-playbook 3_ios_config_debug.yml
 ```
 
 ![6b_ios_config_debug_skipping](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6b_ios_config_debug_skipping.png)
 
 Если теперь опять вручную изменить конфигурацию маршрутизатора 192.168.100.1 (изменить transport input ssh на transport input all):
 ```
-$ ansible-playbook 6b_ios_config_debug.yml
+$ ansible-playbook 3_ios_config_debug.yml
 ```
 
 ![6b_ios_config_debug_update](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6b_ios_config_debug_update.png)
 
 Теперь второе задание отображает информацию о том, какие именно изменения были внесены на маршрутизаторе.
 
+{% endraw %}

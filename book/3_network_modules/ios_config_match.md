@@ -1,3 +1,4 @@
+{% raw %}
 ## match
 
 Параметр __match__  указывает как именно нужно сравнивать команды (что считается изменением):
@@ -20,7 +21,7 @@ ip access-list extended IN_to_OUT
  permit tcp 10.0.1.0 0.0.0.255 any eq 22
 ```
 
-Посмотрим на пример использования playbook 6h_ios_config_match_line.yml в режиме line:
+Посмотрим на пример использования playbook 9_ios_config_match_line.yml в режиме line:
 ```yml
 ---
 
@@ -44,7 +45,7 @@ ip access-list extended IN_to_OUT
 
 Если мы теперь запустим playbook:
 ```
-$ ansible-playbook 6h_ios_config_match_line.yml -v
+$ ansible-playbook 9_ios_config_match_line.yml -v
 ```
 ![6h_ios_config_match_line](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_line.png)
 
@@ -78,7 +79,7 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
-Playbook 6h_ios_config_match_exact.yml (мы будем его постепенно дополнять):
+Playbook 9_ios_config_match_exact.yml (мы будем его постепенно дополнять):
 ```yml
 ---
 
@@ -103,7 +104,7 @@ Playbook 6h_ios_config_match_exact.yml (мы будем его постепен�
 
 Если запустить playbook, результат будет таким:
 ```
-$ ansible-playbook 6h_ios_config_match_exact.yml -v
+$ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
 ![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_1.png)
 
@@ -159,7 +160,7 @@ ip access-list extended IN_to_OUT
 
 Если теперь мы запустим playbook, результат будет таким:
 ```
-$ ansible-playbook 6h_ios_config_match_exact.yml -v
+$ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
 ![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_2.png)
 
@@ -202,9 +203,9 @@ ip access-list extended IN_to_OUT
         provider: "{{ cli }}"
 ```
 
-Применим playbook 6h_ios_config_match_exact.yml к текущему состоянию маршрутизатора (в ACL одна строка):
+Применим playbook 9_ios_config_match_exact.yml к текущему состоянию маршрутизатора (в ACL одна строка):
 ```
-$ ansible-playbook 6h_ios_config_match_exact.yml -v
+$ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
 ![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_final.png)
 
@@ -224,7 +225,7 @@ ip access-list extended IN_to_OUT
 >**Note** В версии Ansible 2.1 match: exact работал по-другому и такой результат достигался комбинацией параметров match: exact и replace: block.
 > В версии 2.2 достаточно match: exact.
 
-И для того чтобы окончательно разобраться с параметром match: exact, посмотрим на последний пример.
+И, для того чтобы окончательно разобраться с параметром ```match: exact```, посмотрим на последний пример.
 
 Закомментируем в playbook строки с удалением ACL:
 ```yml
@@ -268,7 +269,7 @@ ip access-list extended IN_to_OUT
 
 И, в таком варианте, playbook будет выполняться каждый раз и пытаться применить все команды из списка lines, что не будет влиять на содержимое ACL:
 ```
-$ ansible-playbook 6h_ios_config_match_exact.yml -v
+$ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
 ![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_final_2.png)
 
@@ -290,7 +291,7 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
-Playbook 6h_ios_config_match_strict.yml:
+Playbook 9_ios_config_match_strict.yml:
 ```yml
 ---
 
@@ -317,7 +318,7 @@ Playbook 6h_ios_config_match_strict.yml:
 
 Выполнение playbook:
 ```
-$ ansible-playbook 6h_ios_config_match_strict.yml -v
+$ ansible-playbook 9_ios_config_match_strict.yml -v
 ```
 ![6h_ios_config_match_strict](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_strict.png)
 
@@ -331,7 +332,7 @@ $ ansible-playbook 6h_ios_config_match_strict.yml -v
 
 Использование ```match: none``` отключает идемпотентность задачи: каждый раз при выполнении playbook, будут отправляться команды, которые указаны в задаче.
 
-Пример playbook 6h_ios_config_match_none.yml:
+Пример playbook 9_ios_config_match_none.yml:
 ```yml
 ---
 
@@ -358,9 +359,11 @@ $ ansible-playbook 6h_ios_config_match_strict.yml -v
 
 Каждый раз при запуске playbook результат будет таким:
 ```
-$ ansible-playbook 6h_ios_config_match_none.yml -v
+$ ansible-playbook 9_ios_config_match_none.yml -v
 ```
 ![6h_ios_config_match_none](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_none.png)
 
 
 Использование ```match: none``` подходит в тех случаях, когда, независимо от текущей конфигурации, нужно отправить все команды.
+
+{% endraw %}

@@ -1,3 +1,4 @@
+{% raw %}
 ## parents
 
 Если нам нужно применить команды в каком-то подрежиме, а не в глобальном конфигурационно режиме, нужно использовать параметр parents.
@@ -9,7 +10,7 @@ line vty 0 4
  transport input ssh
 ```
 
-В таком случае, playbook 6a_ios_config_parents_basic.yml будет выглядеть так:
+В таком случае, playbook 2_ios_config_parents_basic.yml будет выглядеть так:
 ```yml
 ---
 
@@ -33,7 +34,7 @@ line vty 0 4
 
 Запуск будет выполняться аналогично предыдущим playbook:
 ```
-$ ansible-playbook 6a_ios_config_parents_basic.yml
+$ ansible-playbook 2_ios_config_parents_basic.yml
 ```
 
 ![6a_ios_config_parents_basic](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6a_ios_config_parents_basic.png)
@@ -48,7 +49,7 @@ policy-map OUT_QOS
   shape average 100000000 1000000
 ```
 
-Тогда playbook 6a_ios_config_parents_mult.yml будет выглядеть так:
+Тогда playbook 2_ios_config_parents_mult.yml будет выглядеть так:
 ```yml
 ---
 
@@ -70,3 +71,4 @@ policy-map OUT_QOS
 ```
 
 
+{% endraw %}

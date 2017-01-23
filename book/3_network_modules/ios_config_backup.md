@@ -1,9 +1,10 @@
+{% raw %}
 ## backup
 
 Параметр __backup__ указывает нужно ли делать резервную копию текущей конфигурации устройства перед внесением изменений.
 Файл будет копироваться в каталог backup, относительно каталога в котором находится playbook (если каталог не существует, он будет создан).
 
-Playbook 6d_ios_config_backup.yml:
+Playbook 5_ios_config_backup.yml:
 ```yml
 ---
 
@@ -27,7 +28,7 @@ Playbook 6d_ios_config_backup.yml:
 
 Теперь, каждый раз, когда мы запускаем playbook (даже если не нужно вносить изменения в конфигурацию), в каталог backup будет копироваться текущая конфигурация:
 ```
-$ ansible-playbook 6d_ios_config_backup.yml -v
+$ ansible-playbook 5_ios_config_backup.yml -v
 ```
 ![6d_ios_config_backup](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6d_ios_config_backup.png)
 
@@ -39,3 +40,4 @@ $ ansible-playbook 6d_ios_config_backup.yml -v
 192.168.100.3_config.2016-12-10@10:42:34
 ```
 
+{% endraw %}

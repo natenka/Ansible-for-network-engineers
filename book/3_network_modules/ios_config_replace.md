@@ -1,3 +1,4 @@
+{% raw %}
 ## replace
 
 Параметр replace указывает как именно  нужно заменять конфигурацию:
@@ -18,7 +19,7 @@ ip access-list extended IN_to_OUT
  permit icmp any any
 ```
 
-Попробуем запустить такой playbook 6i_ios_config_replace_line.yml:
+Попробуем запустить такой playbook 10_ios_config_replace_line.yml:
 ```yml
 ---
 
@@ -45,7 +46,7 @@ ip access-list extended IN_to_OUT
 
 Выполнение playbook:
 ```
-$ ansible-playbook 6i_ios_config_replace_line.yml -v
+$ ansible-playbook 10_ios_config_replace_line.yml -v
 ```
 ![6i_ios_config_replace_line](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6i_ios_config_replace_line.png)
 
@@ -79,7 +80,7 @@ ip access-list extended IN_to_OUT
  permit icmp any any
 ```
 
-Playbook 6i_ios_config_replace_block.yml:
+Playbook 10_ios_config_replace_block.yml:
 ```yml
 ---
 
@@ -107,7 +108,7 @@ Playbook 6i_ios_config_replace_block.yml:
 
 Выполнение playbook:
 ```
-$ ansible-playbook 6i_ios_config_replace_block.yml -v
+$ ansible-playbook 10_ios_config_replace_block.yml -v
 ```
 ![6i_ios_config_replace_block](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6i_ios_config_replace_block.png)
 
@@ -122,3 +123,4 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
+{% endraw %}

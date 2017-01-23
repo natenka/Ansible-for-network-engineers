@@ -1,3 +1,4 @@
+{% raw %}
 ## after
 
 Параметр __after__ указывает какие команды выполнить после команд в списке lines (или commands).
@@ -12,7 +13,7 @@
 
 Но, если мы напишем команду no shutdown в списке after, то только в том случае, если нужно вносить изменения (согласно списка lines), будет применена и команда no shutdown.
 
-Пример использования параметра after в playbook 6f_ios_config_after.yml:
+Пример использования параметра after в playbook 7_ios_config_after.yml:
 ```yml
 ---
 
@@ -36,20 +37,20 @@
 
 Первый запуск playbook, с внесением изменений:
 ```
-$ ansible-playbook 6f_ios_config_after.yml -v
+$ ansible-playbook 7_ios_config_after.yml -v
 ```
 ![6f_ios_config_after.png](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6f_ios_config_after.png)
 
 
 Второй запуск playbook (изменений нет, поэтому команда no shutdown не выполняется):
 ```
-$ ansible-playbook 6f_ios_config_after.yml -v
+$ ansible-playbook 7_ios_config_after.yml -v
 ```
 ![6f_ios_config_after_no_change](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6f_ios_config_after_no_change.png)
 
 
 Рассмотрим ещё один пример использования after.
-Сохраним, с помощью after, конфигурацию устройства (playbook 6f_ios_config_after_save.yml):
+Сохраним, с помощью after, конфигурацию устройства (playbook 7_ios_config_after_save.yml):
 ```yml
 ---
 
@@ -75,8 +76,9 @@ $ ansible-playbook 6f_ios_config_after.yml -v
 
 Результат выполнения playbook (изменения только на маршрутизаторе 192.168.100.1):
 ```
-$ ansible-playbook 6f_ios_config_after_save.yml -v
+$ ansible-playbook 7_ios_config_after_save.yml -v
 ```
 ![6f_ios_config_after_save](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6f_ios_config_after_save.png)
 
 
+{% endraw %}

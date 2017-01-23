@@ -1,8 +1,9 @@
+{% raw %}
 ## lines (commands)
 
 Самый простой способ использовать модуль ios_config - отправлять команды глобального конфигурационного режима с параметром lines (для параметра lines есть alias commands, то есть, можно вместо lines писать commands).
 
-Посмотрим на пример playbook 6_ios_config_lines.yml:
+Посмотрим на пример playbook 1_ios_config_lines.yml:
 ```yml
 ---
 
@@ -24,7 +25,7 @@
 
 Если мы запустим playbook, то получим такой результат:
 ```
-$ ansible-playbook 6_ios_config_lines.yml
+$ ansible-playbook 1_ios_config_lines.yml
 ```
 
 ![6_ios_config_lines](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6_ios_config_lines.png)
@@ -41,14 +42,14 @@ $ ansible-playbook 6_ios_config_lines.yml
 Так как модуль каждый раз проверяет конфигурацию, прежде чем применит команду, модуль идемпотентен.
 То есть, если мы ещё раз запустим playbook, а команда уже настроена, изменения не будут выполнены:
 ```
-$ ansible-playbook 6_ios_config_lines.yml
+$ ansible-playbook 1_ios_config_lines.yml
 ```
 
 ![6_ios_config_lines](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6_ios_config_lines_2.png)
 
 > **Caution** Обязательно пишите команды полностью, а не сокращенно. И обращайте внимание, что, для некоторых команд, IOS сам добавляет параметры. Если писать команду не в том виде, в котором она реально видна в конфигурационном файле, модуль не будет идемпотентен. Он будет всё время считать, что команды нет и вносить изменения каждый раз. 
 
-Параметр lines позволяет отправлять и несколько команд (playbook 6_ios_config_mult_lines.yml):
+Параметр lines позволяет отправлять и несколько команд (playbook 1_ios_config_mult_lines.yml):
 ```
 ---
 
@@ -71,7 +72,9 @@ $ ansible-playbook 6_ios_config_lines.yml
 
 Результат выполнения:
 ```
-$ ansible-playbook 6_ios_config_mult_lines.yml
+$ ansible-playbook 1_ios_config_mult_lines.yml
 ```
 
 ![6_ios_config_mult_lines](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6_ios_config_mult_lines.png)
+
+{% endraw %}

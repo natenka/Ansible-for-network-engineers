@@ -1,3 +1,4 @@
+{% raw %}
 ## before
 
 Параметр __before__ указывает какие действия выполнить до команд в списке lines.
@@ -10,7 +11,7 @@
 При этом, также как и параметр after, параметр before не влияет на то, какие команды сравниваются с конфигурацией.
 То есть, по-прежнему, сравниваются только команды в списке lines.
 
-Playbook 6g_ios_config_before.yml:
+Playbook 8_ios_config_before.yml:
 ```yml
 ---
 
@@ -34,19 +35,21 @@ Playbook 6g_ios_config_before.yml:
         provider: "{{ cli }}"
 ```
 
-В playbook 6g_ios_config_before.yml мы сначала удаляем ACL IN_to_OUT с помощью параметра before, а затем создаем его заново.
+В playbook 8_ios_config_before.yml мы сначала удаляем ACL IN_to_OUT с помощью параметра before, а затем создаем его заново.
 Таким образом мы будем уверены всегда, что в этом ACL находятся только те строки, которые мы задали в списке lines.
 
 Запуск playbook с изменениями:
 ```
-$ ansible-playbook 6g_ios_config_before.yml -v
+$ ansible-playbook 8_ios_config_before.yml -v
 ```
 ![6g_ios_config_before](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6g_ios_config_before.png)
 
 
 Запуск playbook без изменений (команда в списке before не выполняется):
 ```
-$ ansible-playbook 6g_ios_config_before.yml -v
+$ ansible-playbook 8_ios_config_before.yml -v
 ```
 ![6g_ios_config_before_no_updates](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6g_ios_config_before_no_updates.png)
 
+
+{% endraw %}
