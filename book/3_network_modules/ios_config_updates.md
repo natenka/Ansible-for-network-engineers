@@ -1,8 +1,10 @@
 {% raw %}
 ## Отображение обновлений
 
-Попробуем сделать playbook, который не только отправляет команды, но и показывает какие именно изменения были сделаны.
-Сделаем это на примере playbook 2_ios_config_parents_basic.yml.
+В этом разделе рассматриваются варианты отображения информацию об обновлениях, которые выполнил модуль ios_config.
+
+
+Playbook 2_ios_config_parents_basic.yml:
 ```yml
 ---
 
@@ -23,27 +25,30 @@
         provider: "{{ cli }}"
 
 ```
+{% endraw %}
 
-Для того, чтобы playbook что-то менял, нужно сначала отменить команды. Либо вручную, либо изменив playbook.
-Например, на маршрутизаторе 192.168.100.1 вместо строки transport input ssh, вручную пропишем строку transport input all.
+> Для того, чтобы playbook что-то менял, нужно сначала отменить команды. Либо вручную, либо изменив playbook.
+> Например, на маршрутизаторе 192.168.100.1, вместо строки transport input ssh, вручную прописать строку transport input all.
 
-Для начала, попробуем вывести изменения с помощью опции verbose:
+Например, можно выполнить playbook с флагом verbose:
 ```
 $ ansible-playbook 2_ios_config_parents_basic.yml -v
 ```
 
-![6a_ios_config_parents_basic](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6a_ios_config_parents_basic_verbose.png)
+![6a_ios_config_parents_basic]({{ book.ansible_img_path }}6a_ios_config_parents_basic_verbose.png)
 
 В выводе, в поле updates видно, какие именно команды Ansible отправил на устройство.
+Изменения были выполнены только на маршрутизаторе 192.168.100.1.
+
 Обратите внимание, что команда login local не отправлялась, так как она настроена.
 
-Изменения были выполнены только на маршрутизаторе 192.168.100.1.
-Ещё один важный момент - поле updates в выводе есть только в том случае, когда есть изменения.
+> Поле updates в выводе есть только в том случае, когда есть изменения.
 
-И, хотя мы можем пользоваться таким вариантом, чтобы отобразить изменения, было бы удобней, чтобы информация отображалась только для тех устройств, для которых произошли изменения.
-А в случае с режимом verbose, мы видим информацию обо всех устройствах.
+В режиме verbose, информация видна обо всех устройствах.
+Но, было бы удобней, чтобы информация отображалась только для тех устройств, для которых произошли изменения.
 
-Сделаем новый playbook 3_ios_config_debug.yml на основе 2_ios_config_parents_basic.yml таким образом:
+{% raw %}
+Новый playbook 3_ios_config_debug.yml на основе 2_ios_config_parents_basic.yml:
 ```
 ---
 
@@ -66,30 +71,31 @@ $ ansible-playbook 2_ios_config_parents_basic.yml -v
 
     - name: Show config updates
       debug: var=cfg.updates
-      when: cfg.changed == true
+      when: cfg.changed
 
 ```
+{% endraw %}
+
 Изменения в playbook:
-* Теперь мы сохраняем результат работы первой задачи в переменную __cfg__.
-* Затем в отдельной задаче используем модуль __debug__ для того, чтобы показать содержимое поля __updates__.
- * так как поле updates в выводе есть только в том случае, когда есть изменения, мы ставим условие when, которое проверяет были ли изменения.
- * задача будет выполняться только тогда, когда на устройстве были внесены изменения.
- * when: cfg.changed эквивалентно записи when: cfg.changed == true
+* результат работы первой задачи сохраняется в переменную __cfg__.
+* в следующей задаче модуль __debug__ выводит содержимое поля __updates__.
+ * но так как поле updates в выводе есть только в том случае, когда есть изменения, ставится условие when, которое проверяет были ли изменения
+ * задача будет выполняться только если на устройстве были внесены изменения.
+ * вместо ```when: cfg.changed``` можно написать ```when: cfg.changed == true```
 
 Если запустить повторно playbook, когда изменений не было, задача Show config updates, пропускается:
 ```
 $ ansible-playbook 3_ios_config_debug.yml
 ```
 
-![6b_ios_config_debug_skipping](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6b_ios_config_debug_skipping.png)
+![6b_ios_config_debug_skipping]({{ book.ansible_img_path }}6b_ios_config_debug_skipping.png)
 
-Если теперь опять вручную изменить конфигурацию маршрутизатора 192.168.100.1 (изменить transport input ssh на transport input all):
+Если внести изменения в конфигурацию маршрутизатора 192.168.100.1 (изменить transport input ssh на transport input all):
 ```
 $ ansible-playbook 3_ios_config_debug.yml
 ```
 
-![6b_ios_config_debug_update](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6b_ios_config_debug_update.png)
+![6b_ios_config_debug_update]({{ book.ansible_img_path }}6b_ios_config_debug_update.png)
 
 Теперь второе задание отображает информацию о том, какие именно изменения были внесены на маршрутизаторе.
 
-{% endraw %}

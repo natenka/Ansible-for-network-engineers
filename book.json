@@ -12,5 +12,9 @@
         "ga": {
             "token": "UA-87357288-3"
             }
+    },
+    "variables": {
+      "ansible_img_path": "https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/",
+      "book_name": "ansible_neteng"
     }
 }

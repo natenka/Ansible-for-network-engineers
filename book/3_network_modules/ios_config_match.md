@@ -21,7 +21,7 @@ ip access-list extended IN_to_OUT
  permit tcp 10.0.1.0 0.0.0.255 any eq 22
 ```
 
-Посмотрим на пример использования playbook 9_ios_config_match_line.yml в режиме line:
+Пример использования playbook 9_ios_config_match_line.yml в режиме line:
 ```yml
 ---
 
@@ -42,12 +42,13 @@ ip access-list extended IN_to_OUT
           - permit icmp any any
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
-Если мы теперь запустим playbook:
+Результат выполнения playbook:
 ```
 $ ansible-playbook 9_ios_config_match_line.yml -v
 ```
-![6h_ios_config_match_line](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_line.png)
+![6h_ios_config_match_line]({{ book.ansible_img_path }}6h_ios_config_match_line.png)
 
 
 Обратите внимание, что в списке updates только две из трёх строк ACL.
@@ -65,10 +66,10 @@ ip access-list extended IN_to_OUT
 То есть, порядок команд поменялся.
 И, хотя в этом случае, это не важно, иногда это может привести совсем не к тем результатам, которые ожидались.
 
-Если мы повторно запустим playbook, при такой конфигурации, он не будет выполнять изменения, так как все строки были найдены.
+Если повторно запустить playbook, при такой конфигурации, он не будет выполнять изменения, так как все строки были найдены.
 
 ### match: exact
-Посмотрим на пример, в котором порядок команд важен.
+Пример, в котором порядок команд важен.
 
 ACL на маршрутизаторе:
 ```
@@ -79,7 +80,8 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
-Playbook 9_ios_config_match_exact.yml (мы будем его постепенно дополнять):
+{% raw %}
+Playbook 9_ios_config_match_exact.yml (будет постепенно дополняться):
 ```yml
 ---
 
@@ -102,11 +104,12 @@ Playbook 9_ios_config_match_exact.yml (мы будем его постепенн
         provider: "{{ cli }}"
 ```
 
+{% endraw %}
 Если запустить playbook, результат будет таким:
 ```
 $ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
-![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_1.png)
+![6h_ios_config_match_exact]({{ book.ansible_img_path }}6h_ios_config_match_exact_1.png)
 
 
 Теперь ACL выглядит так:
@@ -122,7 +125,8 @@ ip access-list extended IN_to_OUT
 Конечно же, в таком случае, последнее правило никогда не сработает.
 
 
-Мы могли бы добавить к этому playbook параметр before и сначала удалить ACL, а затем применять команды:
+{% raw %}
+Можно добавить к этому playbook параметр before и сначала удалить ACL, а затем применять команды:
 ```yml
 ---
 
@@ -147,7 +151,8 @@ ip access-list extended IN_to_OUT
         provider: "{{ cli }}"
 ```
 
-Если мы применим playbook к последнему состоянию маршрутизатора, то изменений не будет никаких, так как все строки уже есть.
+{% endraw %}
+Если применить playbook к последнему состоянию маршрутизатора, то изменений не будет никаких, так как все строки уже есть.
 
 Попробуем начать с такого состояния ACL:
 ```
@@ -158,25 +163,27 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
-Если теперь мы запустим playbook, результат будет таким:
+Результат будет таким:
 ```
 $ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
-![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_2.png)
+![6h_ios_config_match_exact]({{ book.ansible_img_path }}6h_ios_config_match_exact_2.png)
 
 
-И, соответственно на маршрутизаторе:
+И, соответственно, на маршрутизаторе:
 ```
 R1#sh run | s access
 ip access-list extended IN_to_OUT
  permit icmp any any
 ```
 
-Теперь в ACL осталась только одна строка. Почему?
+Теперь в ACL осталась только одна строка:
+* Модуль проверил каких команд не хватает в ACL (так как режим по умолчанию match: line),
+* обнаружил, что не хватает команды ```permit icmp any any``` и добавил её
 
-Модуль проверил каких команд не хватает в ACL (так как режим по умолчанию match: line), обнаружил, что не хватает команды ```permit icmp any any``` и добавил её.
-Но, так как мы сначала удаляем ACL, а затем применяем список команд lines, получилось, что у нас теперь ACL с одной строкой.
+Но, так как в playbook ACL сначала удаляется, а затем применяется список команд lines, получилось, что в итоге в ACL одна строка.
 
+{% raw %}
 Поможет, в такой ситуации, вариант ```match: exact```:
 ```yml
 ---
@@ -203,11 +210,12 @@ ip access-list extended IN_to_OUT
         provider: "{{ cli }}"
 ```
 
-Применим playbook 9_ios_config_match_exact.yml к текущему состоянию маршрутизатора (в ACL одна строка):
+{% endraw %}
+Применение playbook 9_ios_config_match_exact.yml к текущему состоянию маршрутизатора (в ACL одна строка):
 ```
 $ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
-![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_final.png)
+![6h_ios_config_match_exact]({{ book.ansible_img_path }}6h_ios_config_match_exact_final.png)
 
 
 Теперь результат такой:
@@ -225,7 +233,8 @@ ip access-list extended IN_to_OUT
 >**Note** В версии Ansible 2.1 match: exact работал по-другому и такой результат достигался комбинацией параметров match: exact и replace: block.
 > В версии 2.2 достаточно match: exact.
 
-И, для того чтобы окончательно разобраться с параметром ```match: exact```, посмотрим на последний пример.
+И, для того чтобы окончательно разобраться с параметром ```match: exact```, ещё один пример.
+{% raw %}
 
 Закомментируем в playbook строки с удалением ACL:
 ```yml
@@ -253,7 +262,8 @@ ip access-list extended IN_to_OUT
         provider: "{{ cli }}"
 ```
 
-А в начало ACL добавим строку:
+{% endraw %}
+В начало ACL добавлена строка:
 ```
 ip access-list extended IN_to_OUT
  permit udp any any
@@ -267,20 +277,20 @@ ip access-list extended IN_to_OUT
 Но, при этом, есть лишняя строка.
 Для варианта match: exact - это уже несовпадение.
 
-И, в таком варианте, playbook будет выполняться каждый раз и пытаться применить все команды из списка lines, что не будет влиять на содержимое ACL:
+В таком варианте, playbook будет выполняться каждый раз и пытаться применить все команды из списка lines, что не будет влиять на содержимое ACL:
 ```
 $ ansible-playbook 9_ios_config_match_exact.yml -v
 ```
-![6h_ios_config_match_exact](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_exact_final_2.png)
+![6h_ios_config_match_exact]({{ book.ansible_img_path }}6h_ios_config_match_exact_final_2.png)
 
-
-При использовании ```match:exact```, важно, чтобы был какой-то способ удалить конфигурацию, если она не соответствует тому, что должно быть (или чтобы команды перезаписывались).
+Это значит, что при использовании ```match:exact```, важно, чтобы был какой-то способ удалить конфигурацию, если она не соответствует тому, что должно быть (или чтобы команды перезаписывались).
 Иначе, эта задача будет выполняться каждый раз, при запуске playbook.
 
 ### match: strict
 
 Вариант ```match: strict``` не требует, чтобы объект был в точности как указано в задаче, но, команды, которые указаны в списке lines, должны быть в том же порядке.
-А также, если указан список parents, команды в списке lines должны идти сразу за командами parents.
+
+Если указан список parents, команды в списке lines должны идти сразу за командами parents.
 
 На маршрутиазаторе такой ACL:
 ```
@@ -291,6 +301,7 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
+{% raw %}
 Playbook 9_ios_config_match_strict.yml:
 ```yml
 ---
@@ -315,23 +326,25 @@ Playbook 9_ios_config_match_strict.yml:
         match: strict
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
 Выполнение playbook:
 ```
 $ ansible-playbook 9_ios_config_match_strict.yml -v
 ```
-![6h_ios_config_match_strict](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_strict.png)
+![6h_ios_config_match_strict]({{ book.ansible_img_path }}6h_ios_config_match_strict.png)
 
 
 Так как изменений не было, ACL остался таким же.
 
-В такой же ситуации, при использовании match: exact, было бы обнаружено изменение и ACL бы состоял только из строк в списке lines.
+В такой же ситуации, при использовании ```match: exact```, было бы обнаружено изменение и ACL бы состоял только из строк в списке lines.
 
 
 ### match: none
 
 Использование ```match: none``` отключает идемпотентность задачи: каждый раз при выполнении playbook, будут отправляться команды, которые указаны в задаче.
 
+{% raw %}
 Пример playbook 9_ios_config_match_none.yml:
 ```yml
 ---
@@ -356,14 +369,14 @@ $ ansible-playbook 9_ios_config_match_strict.yml -v
         match: none
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
 Каждый раз при запуске playbook результат будет таким:
 ```
 $ ansible-playbook 9_ios_config_match_none.yml -v
 ```
-![6h_ios_config_match_none](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6h_ios_config_match_none.png)
+![6h_ios_config_match_none]({{ book.ansible_img_path }}6h_ios_config_match_none.png)
 
 
 Использование ```match: none``` подходит в тех случаях, когда, независимо от текущей конфигурации, нужно отправить все команды.
 
-{% endraw %}

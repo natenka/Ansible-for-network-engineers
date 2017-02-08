@@ -1,10 +1,11 @@
 {% raw %}
 # ntc-ansible
 
-__ntc-ansible__ - это модуль для работы с сетевым оборудованием, который не только выполняет команды на оборудовании, но и обрабатывает вывод команд и преобразует с помощью [TextFSM](https://natenka.gitbooks.io/pyneng/content/book/chapter14/).
+__ntc-ansible__ - это модуль для работы с сетевым оборудованием, который не только выполняет команды на оборудовании, но и обрабатывает вывод команд и преобразует с помощью [TextFSM](../../4_textfsm/).
 
-Этот модуль не входит в число core модулей Ansible, поэтому его нужно сначала установить.
-Но прежде нужно указать Ansible где искать сторонние модули.
+Этот модуль не входит в число core модулей Ansible, поэтому его нужно установить.
+
+Но прежде нужно указать Ansible, где искать сторонние модули.
 Указывается путь в файле ansible.cfg:
 ```
 [defaults]
@@ -52,6 +53,7 @@ pip install ntc-ansible
 ## ntc_show_command
 
 Модуль использует netmiko для подключения к оборудованию (netmiko должен быть установлен) и, после выполнения команды, преобразует вывод команды show с помощью TextFSM в структурированный вывод (список словарей).
+
 Преобразование будет выполняться в том случае, если в файле index была найдена команда и для команды был найден шаблон.
 
 Как и с предыдущими сетевыми модулями, в ntc-ansible нужно указывать ряд параметров для подключения:
@@ -64,7 +66,7 @@ pip install ntc-ansible
 * __template_dir__ - путь к каталогу в котором находятся шаблоны (в текущем варианте установки они находятся в каталоге library/ntc-ansible/ntc-templates/templates
 
 
-Посмотрим на пример playbook 1_ntc_ansible.yml:
+Пример playbook 1_ntc_ansible.yml:
 ```
 ---
 
@@ -88,6 +90,7 @@ pip install ntc-ansible
 
     - debug: var=result
 ```
+{% endraw %}
 
 
 Результат выполнения playbook:
@@ -95,10 +98,11 @@ pip install ntc-ansible
 $ ansible-playbook 1_ntc-ansible.yml
 ```
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/7_ntc_ansible.png)
+![Ansible playbook]({{ book.ansible_img_path }}7_ntc_ansible.png)
 
 
-В переменной response мы получили структурированный вывод в виде списка словарей.
+{% raw %}
+В переменной response находится структурированный вывод в виде списка словарей.
 Ключи в словарях получены на основании переменных, которые описаны в шаблоне library/ntc-ansible/ntc-templates/templates/cisco_ios_show_ip_int_brief.template (единственное отличие - регистр):
 ```
 Value INTF (\S+)
@@ -110,15 +114,14 @@ Start
   ^${INTF}\s+${IPADDR}\s+\w+\s+\w+\s+${STATUS}\s+${PROTO} -> Record
 ```
 
-В дальнейшем мы можем сохранять полученный вывод, или обрабатывать нужные части.
 
-Для того, чтобы получить вывод про первый интерфейс, например, можно поменять вывод модуля debug, таким образом:
+Для того, чтобы получить вывод про первый интерфейс, можно поменять вывод модуля debug, таким образом:
 ```
     - debug: var=result.response[0]
 ```
 
 ### Сохранение результатов выполнения команды
-Для того, чтобы сохранить вывод, можно использовать тот же прием, который мы использовали для модуля ios_facts.
+Для того, чтобы сохранить вывод, можно использовать тот же прием, который использовался для модуля ios_facts.
 
 Пример playbook 2_ntc_ansible_save.yml с сохранением результатов команды:
 ```
@@ -152,9 +155,9 @@ Start
 ```
 $ ansible-playbook 2_ntc-ansible_save.yml
 ```
+{% endraw %}
 
-![Ansible playbook](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/7a_ntc_ansible_save.png)
-
+![Ansible playbook]({{ book.ansible_img_path }}7a_ntc_ansible_save.png)
 
 В результате, в каталоге all_facts повяляются соответствующие файлы для каждого маршрутизатора.
 Пример файла all_facts/192.168.100.1_sh_ip_int_br.json:
@@ -226,7 +229,7 @@ cisco_ios_show_vlan.template
 cisco_ios_show_vtp_status.template
 ```
 
-Список всех шаблонов вы можете посмотреть локально, если вы установили ntc-ansible:
+Список всех шаблонов можно посмотреть локально, если ntc-ansible установлен:
 ```
 ls -ls library/ntc-ansible/ntc-templates/templates/
 ```
@@ -251,6 +254,5 @@ cisco_ios_show_aliases.template,  .*, cisco_ios, sh[[ow]] alia[[ses]]
 ...
 ```
 
-Синтаксис шаблонов и файла index описаны в разделе [TextFSM](https://natenka.gitbooks.io/pyneng/content/book/chapter14/) курса [Python для сетевых инженеров](https://natenka.gitbooks.io/pyneng/content/).
+Синтаксис шаблонов и файла index описаны в разделе [TextFSM](../../14_textfsm/).
 
-{% endraw %}

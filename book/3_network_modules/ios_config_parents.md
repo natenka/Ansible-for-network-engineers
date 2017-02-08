@@ -1,9 +1,9 @@
 {% raw %}
 ## parents
 
-Если нам нужно применить команды в каком-то подрежиме, а не в глобальном конфигурационно режиме, нужно использовать параметр parents.
+Параметр parents используется, чтобы указать в каком подрежиме применить команды.
 
-Например, нам нужно применить такие команды:
+Например, необходимо применить такие команды:
 ```
 line vty 0 4
  login local
@@ -31,18 +31,20 @@ line vty 0 4
         provider: "{{ cli }}"
 
 ```
+{% endraw %}
 
 Запуск будет выполняться аналогично предыдущим playbook:
 ```
 $ ansible-playbook 2_ios_config_parents_basic.yml
 ```
 
-![6a_ios_config_parents_basic](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6a_ios_config_parents_basic.png)
+![6a_ios_config_parents_basic]({{ book.ansible_img_path }}6a_ios_config_parents_basic.png)
 
 
-Если нам нужно выполнить команду в нескольких вложенных режимах, мы указываем подрежимы в списке parents.
-Например, нам нужно выполнить такие команды:
+Если команда находится в нескольких вложенных режимах, подрежимы указываются в списке parents.
 
+{% raw %}
+Например, необходимо выполнить такие команды:
 ```
 policy-map OUT_QOS
  class class-default

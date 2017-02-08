@@ -1,13 +1,13 @@
 {% raw %}
 ## src
 
-Параметр __src__ позволяет указывать путь к файлу в котором находится конфигурация или шаблон конфигурации, которую нужно загрузить на устройство.
+Параметр __src__ позволяет указывать путь к файлу конфигурации или шаблону конфигурации, которую нужно загрузить на устройство.
 
 Этот параметр взаимоисключающий с lines (то есть, можно указывать или lines или src). Он заменяет модуль ios_template, который скоро будет удален.
 
 ### Конфигурация
 
-Посмотрим на пример playbook 11_ios_config_src.yml, который использует параметр src:
+Пример playbook 11_ios_config_src.yml:
 ```yml
 ---
 
@@ -23,6 +23,7 @@
         src: templates/acl_cfg.txt
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
 В файле templates/acl_cfg.txt находится такая конфигурация:
 ```
@@ -37,7 +38,7 @@ ip access-list extended IN_to_OUT
 ```
 $ ansible-playbook 11_ios_config_src.yml -v
 ```
-![6j_ios_config_src](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src.png)
+![6j_ios_config_src]({{ book.ansible_img_path }}6j_ios_config_src.png)
 
 Неприятная особенность параметра src в том, что не видно какие изменения были внесены.
 Но, возможно, в следующих версиях Ansible это будет исправлено.
@@ -56,12 +57,13 @@ ip access-list extended IN_to_OUT
 ```
 $ ansible-playbook 11_ios_config_src.yml -v
 ```
-![6j_ios_config_src_2](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_2.png)
+![6j_ios_config_src_2]({{ book.ansible_img_path }}6j_ios_config_src_2.png)
 
 
+{% raw %}
 ### Шаблон Jinja2
 
-Также, в параметре src мы можем указывать шаблон Jinja2.
+В параметре src можно указывать шаблон Jinja2.
 
 Пример шаблона (файл templates/ospf.j2):
 ```j2
@@ -74,12 +76,12 @@ router ospf 1
 {% endfor %}
 ```
 
-Нам нужно передать две переменные, чтобы все настройки были выполнены:
+В шаблоне используются две переменные:
 * mgmnt_ip - IP-адрес, который будет использоваться как router-id
 * ospf_ints - список IP-адресов интерфейсов, на которых нужно включить OSPF
 
-Настраивать OSPF мы будем на трёх маршрутизаторах, соответственно, нам нужно иметь возможность использовать разные значения переменных для разных устройств.
-Именно для таких задач и нужны файлы с переменными в каталоге host_vars.
+Для настройки OSPF на трёх маршрутизаторах, нужно иметь возможность использовать разные значения этих переменных для разных устройств.
+Для таких задач используются файлы с переменными в каталоге host_vars.
 
 В каталоге host_vars нужно создать такие файлы (если они ещё не созданы):
 
@@ -123,7 +125,7 @@ ospf_ints:
 ```
 
 
-Теперь мы можем создавать playbook 11_ios_config_src_jinja.yml:
+Теперь можно создавать playbook 11_ios_config_src_jinja.yml:
 ```yml
 ---
 
@@ -139,13 +141,14 @@ ospf_ints:
         src: templates/ospf.j2
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
-Так как Ansible сам найдет переменные в каталоге host_vars, нам не нужно никак дополнительно их указывать.
+Так как Ansible сам найдет переменные в каталоге host_vars, их не нужно указывать.
 Можно сразу запускать playbook:
 ```
 $ ansible-playbook 11_ios_config_src_jinja.yml -v
 ```
-![6j_ios_config_src_jinja](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_jinja.png)
+![6j_ios_config_src_jinja]({{ book.ansible_img_path }}6j_ios_config_src_jinja.png)
 
 Теперь на всех маршрутизаторах настроен OSPF:
 ```
@@ -181,7 +184,7 @@ router ospf 1
 ```
 $ ansible-playbook 11_ios_config_src_jinja.yml -v
 ```
-![6j_ios_config_src_jinja_2](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6j_ios_config_src_jinja_2.png)
+![6j_ios_config_src_jinja_2]({{ book.ansible_img_path }}6j_ios_config_src_jinja_2.png)
 
 ### Совмещение с другими параметрами
 
@@ -191,4 +194,3 @@ $ ansible-playbook 11_ios_config_src_jinja.yml -v
 * defaults
 * save (но у самого save в Ansible 2.2 проблемы с работой) 
 
-{% endraw %}

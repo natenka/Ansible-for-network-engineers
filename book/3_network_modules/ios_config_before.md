@@ -7,8 +7,9 @@
 * выполняются только если должны быть внесены изменения.
 * при этом они будут выполнены, независимо от того есть они в конфигурации или нет.
 
-Параметр before полезен в ситуациях, когда вам нужно выполнить какуе-то действия перед выполнением команд в списке lines.
-При этом, также как и параметр after, параметр before не влияет на то, какие команды сравниваются с конфигурацией.
+Параметр before полезен в ситуациях, когда какие-то действия необходимо выполнить перед выполнением команд в списке lines.
+
+При этом, как и after, параметр before не влияет на то, какие команды сравниваются с конфигурацией.
 То есть, по-прежнему, сравниваются только команды в списке lines.
 
 Playbook 8_ios_config_before.yml:
@@ -35,21 +36,21 @@ Playbook 8_ios_config_before.yml:
         provider: "{{ cli }}"
 ```
 
-В playbook 8_ios_config_before.yml мы сначала удаляем ACL IN_to_OUT с помощью параметра before, а затем создаем его заново.
-Таким образом мы будем уверены всегда, что в этом ACL находятся только те строки, которые мы задали в списке lines.
+В playbook 8_ios_config_before.yml ACL IN_to_OUT сначала удалятся, с помощью параметра before, а затем создается заново.
+
+Таким образом в ACL всегда находятся только те строки, которые заданы в списке lines.
+{% endraw %}
 
 Запуск playbook с изменениями:
 ```
 $ ansible-playbook 8_ios_config_before.yml -v
 ```
-![6g_ios_config_before](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6g_ios_config_before.png)
+![6g_ios_config_before]({{ book.ansible_img_path }}6g_ios_config_before.png)
 
 
 Запуск playbook без изменений (команда в списке before не выполняется):
 ```
 $ ansible-playbook 8_ios_config_before.yml -v
 ```
-![6g_ios_config_before_no_updates](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6g_ios_config_before_no_updates.png)
+![6g_ios_config_before_no_updates]({{ book.ansible_img_path }}6g_ios_config_before_no_updates.png)
 
-
-{% endraw %}

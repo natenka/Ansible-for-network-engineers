@@ -1,7 +1,7 @@
 {% raw %}
 ## replace
 
-Параметр replace указывает как именно  нужно заменять конфигурацию:
+Параметр replace указывает как именно нужно заменять конфигурацию:
 * __line__ - в этом режиме отправляются только те команды, которых нет в конфигурации. Этот режим используется по умолчанию
 * __block__ - в этом режиме отправляются все команды, если хотя бы одной команды нет
 
@@ -43,12 +43,13 @@ ip access-list extended IN_to_OUT
           - deny   ip any any
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
 Выполнение playbook:
 ```
 $ ansible-playbook 10_ios_config_replace_line.yml -v
 ```
-![6i_ios_config_replace_line](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6i_ios_config_replace_line.png)
+![6i_ios_config_replace_line]({{ book.ansible_img_path }}6i_ios_config_replace_line.png)
 
 
 После этого на маршрутизаторе такой ACL:
@@ -58,10 +59,9 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
-У нас уже была такая же ситуация, когда мы рассматривали параметр match, так как именно параметр replace говорит каким образом заменять команды.
 
 В данном случае, модуль проверил каких команд не хватает в ACL (так как режим по умолчанию match: line), обнаружил, что не хватает команды ```deny ip any any``` и добавил её.
-Но, так как мы сначала удаляем ACL, а затем применяем список команд lines, получилось, что у нас теперь ACL с одной строкой.
+Но, так как ACL сначала удаляется, а затем применяется список команд lines, получилось, что у теперь ACL с одной строкой.
 
 В таких ситуациях  подходит режим ```replace: block```.
 
@@ -80,6 +80,7 @@ ip access-list extended IN_to_OUT
  permit icmp any any
 ```
 
+{% raw %}
 Playbook 10_ios_config_replace_block.yml:
 ```yml
 ---
@@ -105,12 +106,13 @@ Playbook 10_ios_config_replace_block.yml:
         replace: block
         provider: "{{ cli }}"
 ```
+{% endraw %}
 
 Выполнение playbook:
 ```
 $ ansible-playbook 10_ios_config_replace_block.yml -v
 ```
-![6i_ios_config_replace_block](https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/6i_ios_config_replace_block.png)
+![6i_ios_config_replace_block]({{ book.ansible_img_path }}6i_ios_config_replace_block.png)
 
 
 В результате на маршрутизаторе такой ACL:
@@ -123,4 +125,3 @@ ip access-list extended IN_to_OUT
  deny   ip any any
 ```
 
-{% endraw %}
