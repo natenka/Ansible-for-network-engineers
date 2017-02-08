@@ -254,5 +254,9 @@ cisco_ios_show_aliases.template,  .*, cisco_ios, sh[[ow]] alia[[ses]]
 ...
 ```
 
+{% if book.book_name == "ansible_neteng" %}
+Синтаксис шаблонов и файла index описаны в разделе [TextFSM курса "Python для сетевых инженеров"](https://natenka.gitbooks.io/pyneng/content/book/14_textfsm/).
+{% else %}
 Синтаксис шаблонов и файла index описаны в разделе [TextFSM](../../14_textfsm/).
+{% endif %}
 

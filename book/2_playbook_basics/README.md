@@ -13,8 +13,11 @@ Playbook (файл сценариев) — это файл в котором о�
 
 Playbook описываются в формате YAML.
 
+{% if book.book_name == "ansible_neteng" %}
 > Синтаксис YAML описан в [разделе YAML курса "Python для сетевых инженеров"](https://natenka.gitbooks.io/pyneng/content/book/10_serialization/3_yaml.html) или в [документации Ansible](http://docs.ansible.com/ansible/YAMLSyntax.html).
-
+{% else %}
+> Синтаксис YAML описан в [разделе YAML](../10_serialization/3_yaml.md) или в [документации Ansible](http://docs.ansible.com/ansible/YAMLSyntax.html).
+{% endif %}
 
 ### Пример синтаксиса playbook
 
