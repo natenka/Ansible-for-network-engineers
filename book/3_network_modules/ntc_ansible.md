@@ -1,11 +1,6 @@
 # ntc-ansible
 
-__ntc-ansible__ - это модуль для работы с сетевым оборудованием, который не только выполняет команды на оборудовании, но и обрабатывает вывод команд и преобразует с помощью
-{% if book.book_name == "ansible_neteng" %}
-[TextFSM](https://natenka.gitbooks.io/pyneng/content/book/14_textfsm/).
-{% else %}
- [TextFSM](../../4_textfsm/).
-{% endif %}
+__ntc-ansible__ - это модуль для работы с сетевым оборудованием, который не только выполняет команды на оборудовании, но и обрабатывает вывод команд и преобразует с помощью {% if book.book_name == "ansible_neteng" %}[TextFSM](https://natenka.gitbooks.io/pyneng/content/book/14_textfsm/).{% else %}[TextFSM](../../4_textfsm/).{% endif %}
 
 Этот модуль не входит в число core модулей Ansible, поэтому его нужно установить.
 
