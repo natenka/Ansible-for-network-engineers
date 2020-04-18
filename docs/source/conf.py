@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Ansible для сетевых инженеров.'
+project = 'Ansible для сетевых инженеров'
 copyright = '2020, Natasha Samoylenko'
 author = 'Natasha Samoylenko'
 
