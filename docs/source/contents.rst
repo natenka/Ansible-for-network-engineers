@@ -49,3 +49,5 @@ Ansible. Связано это с тем, что Ansible не требует у�
    book/01_basics/index.rst
    book/02_playbook_basics/index.rst
    book/03_network_modules/index.rst
+   book/04_playbooks/index.rst
+   book/05_useful_modules/index.rst
