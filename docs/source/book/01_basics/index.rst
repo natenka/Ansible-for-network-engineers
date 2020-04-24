@@ -57,3 +57,4 @@ Ansible:
    ad-hoc
    configuration
    modules
+   network_cli

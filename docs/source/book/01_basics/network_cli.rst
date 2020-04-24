@@ -12,7 +12,7 @@
     ---
 
     - name: Run show commands on routers
-      hosts: cisco-routers
+      hosts: cisco_routers
       connection: network_cli
 
 В Ansible переменные можно указывать в разных местах, поэтому те же
@@ -22,15 +22,15 @@
 
 ::
 
-    [cisco-routers]
+    [cisco_routers]
     192.168.100.1
     192.168.100.2
     192.168.100.3
 
-    [cisco-switches]
+    [cisco_switches]
     192.168.100.100
 
-    [cisco-routers:vars]
+    [cisco_routers:vars]
     ansible_connection=network_cli
 
 Или в файлах переменных, например, в group_vars/all.yml:
@@ -72,23 +72,20 @@
     ansible_become_pass: cisco
 
 Подготовка к работе с сетевыми модулями
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======================================
 
 В следующих разделах рассматривается работа с модулями ios_command,
 ios_facts и ios_config. Для того, чтобы все примеры playbook работали,
 надо создать несколько файлов (проверить, что они есть).
 
-Инвентарный файл myhosts:
+Инвентарный файл myhosts.ini:
 
 ::
 
-    [cisco-routers]
+    [cisco_routers]
     192.168.100.1
     192.168.100.2
     192.168.100.3
-
-    [cisco-switches]
-    192.168.100.100
 
 Конфигурационный файл ansible.cfg:
 
@@ -96,7 +93,7 @@ ios_facts и ios_config. Для того, чтобы все примеры playb
 
     [defaults]
 
-    inventory = ./myhosts
+    inventory = myhosts.ini
 
 В файле group_vars/all.yml надо создать параметры для подключения к
 оборудованию:
