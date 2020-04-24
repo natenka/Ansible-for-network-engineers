@@ -33,3 +33,5 @@
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/resources_get.png
 
+Важный аспект получения информации о ресурсе - она одинаково структурирована
+для разных платформ.
