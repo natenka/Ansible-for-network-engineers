@@ -8,7 +8,6 @@
 ==================
 
 В этом разделе рассматриваются модули, которые появились в Ansible 2.9.
-Работают с сетевым оборудованием через CLI. Глобально модули для работы с сетевым оборудованием можно разделить на
 
 Модули:
 
@@ -22,12 +21,13 @@
 * ios_l3_interfaces
 * ios_lag_interfaces
 
-
 Подробнее о `модулях ресурсов <https://www.ansible.com/blog/network-features-coming-soon-in-ansible-engine-2.9>`__
+
 
 .. toctree::
    :maxdepth: 1
 
+   get_resources
    interfaces
    l2_interfaces
    l3_interfaces

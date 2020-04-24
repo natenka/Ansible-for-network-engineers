@@ -59,9 +59,7 @@ Handlers описываются в своем подразделе playbook - ha
     $ ansible-playbook 8_handlers.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handler.png
-   :alt: 8_handler
 
-   8_handler
 Обратите внимание, что handler выполняется только один раз.
 
 Запуск того же playbook с изменениями и режимом verbose:
@@ -71,9 +69,7 @@ Handlers описываются в своем подразделе playbook - ha
     $ ansible-playbook 8_handlers.yml -v
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handlers_verbose.png
-   :alt: 8_handlers_verbose
 
-   8_handlers_verbose
 Запуск playbook без изменений:
 
 ::
