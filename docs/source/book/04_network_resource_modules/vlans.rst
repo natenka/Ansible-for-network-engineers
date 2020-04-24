@@ -23,6 +23,45 @@ Playbook 5_ios_vlans.yml
         - name: Show result
           debug: var=result
 
+Вывод до:
+
+::
+
+    SW1#sh vlan br
+
+    VLAN Name                             Status    Ports
+    ---- -------------------------------- --------- -------------------------------
+    1    default                          active    Et0/0, Et0/1, Et0/2, Et0/3
+                                                    Et1/0, Et1/1, Et1/2, Et1/3
+                                                    Et2/0, Et2/1, Et2/2, Et2/3
+                                                    Et3/0, Et3/1, Et3/2, Et3/3
+    10   VLAN0010                         active
+    1002 fddi-default                     act/unsup
+    1003 token-ring-default               act/unsup
+    1004 fddinet-default                  act/unsup
+    1005 trnet-default                    act/unsup
+
+После:
+
+::
+
+    SW1#sh vlan br
+
+    VLAN Name                             Status    Ports
+    ---- -------------------------------- --------- -------------------------------
+    1    default                          active    Et0/0, Et0/1, Et0/2, Et0/3
+                                                    Et1/0, Et1/1, Et1/2, Et1/3
+                                                    Et2/0, Et2/1, Et2/2, Et2/3
+                                                    Et3/0, Et3/1, Et3/2, Et3/3
+    10   Vlan_10                          active
+    20   Vlan_20                          active
+    1002 fddi-default                     act/unsup
+    1003 token-ring-default               act/unsup
+    1004 fddinet-default                  act/unsup
+    1005 trnet-default                    act/unsup
+
+Выполнение playbook:
+
 ::
 
     $ ansible-playbook 5_ios_vlans.yml
