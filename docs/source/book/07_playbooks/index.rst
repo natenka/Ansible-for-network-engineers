@@ -4,7 +4,7 @@
 
 .. _ansible_playbook:
 
-4. Playbook
+7. Playbook
 ===========
 
 В прошлых разделах мы разобрались с основами playbook. В этом разделе мы
