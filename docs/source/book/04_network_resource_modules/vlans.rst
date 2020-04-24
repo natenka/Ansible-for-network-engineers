@@ -1,9 +1,31 @@
 ios_vlans
 ---------
 
+Playbook 5_ios_vlans.yml
+
 ::
 
-    $ ansible-playbook 5_ios_vlans_.yml
+    - name: Collect IOS facts
+      hosts: 192.168.100.100
+
+      tasks:
+
+        - name: Configure vlans
+          ios_vlans:
+            config:
+              - name: Vlan_10
+                vlan_id: 10
+              - name: Vlan_20
+                vlan_id: 20
+            state: merged
+          register: result
+
+        - name: Show result
+          debug: var=result
+
+::
+
+    $ ansible-playbook 5_ios_vlans.yml
 
     PLAY [Collect IOS facts] ***************************************************
 
