@@ -86,6 +86,5 @@ IOS:
    ios_facts
    ios_config
    ntc_ansible
-   ansible_more
    further_reading
    ../../exercises/24_exercises

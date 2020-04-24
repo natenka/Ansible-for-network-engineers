@@ -45,19 +45,3 @@ playbook они перезаписываются):
     192.168.100.2_config.2016-12-10@10:42:34
     192.168.100.3_config.2016-12-10@10:42:34
 
-При работе с Python 3, может возникнуть ошибка "RuntimeError: dictionary
-changed size during iteration". Ее можно исправить вручную. Для этого
-надо запустить playbook с опцией -vvv и посмотреть где находится модуль
-ios_config. В выводе также будет информация о том в какой строке
-ошибка.
-
-Пример ошибки:
-
-::
-
-    File "/home/vagrant/venv/py3_convert/lib/python3.6/site-packages/ansible/plugins/action/ios_config.py", line 57, in run
-        for key in result.keys():
-    RuntimeError: dictionary changed size during iteration
-
-Для исправления, надо в указанной строке сменить
-``for key in result.keys():`` на ``for key in list(result.keys()):``.
