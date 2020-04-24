@@ -11,7 +11,7 @@ Handlers - это специальные задачи. Они вызываютс
 Handlers описываются в своем подразделе playbook - handlers, так же, как
 и задачи. Для них используется такой же синтаксис, как и для задач.
 
-Пример использования handlers (playbook 8\_handlers.yml):
+Пример использования handlers (playbook 8_handlers.yml):
 
 .. code:: yml
 
@@ -59,9 +59,9 @@ Handlers описываются в своем подразделе playbook - ha
     $ ansible-playbook 8_handlers.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handler.png
-   :alt: 8\_handler
+   :alt: 8_handler
 
-   8\_handler
+   8_handler
 Обратите внимание, что handler выполняется только один раз.
 
 Запуск того же playbook с изменениями и режимом verbose:
@@ -71,9 +71,9 @@ Handlers описываются в своем подразделе playbook - ha
     $ ansible-playbook 8_handlers.yml -v
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handlers_verbose.png
-   :alt: 8\_handlers\_verbose
+   :alt: 8_handlers_verbose
 
-   8\_handlers\_verbose
+   8_handlers_verbose
 Запуск playbook без изменений:
 
 ::
@@ -81,8 +81,7 @@ Handlers описываются в своем подразделе playbook - ha
     $ ansible-playbook 8_handlers.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_handlers_no_change.png
-   :alt: 8\_handlers\_no\_change
 
-   8\_handlers\_no\_change
+
 Так как в задачах не нужно выносить изменений, handler также не
 выполняется.

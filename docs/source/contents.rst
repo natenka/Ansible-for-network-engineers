@@ -53,4 +53,3 @@ Ansible. Связано это с тем, что Ansible не требует у�
    book/05_network_cli_modules/index.rst
    book/06_parsing_output/index.rst
    book/07_playbooks/index.rst
-   book/08_useful_modules/index.rst

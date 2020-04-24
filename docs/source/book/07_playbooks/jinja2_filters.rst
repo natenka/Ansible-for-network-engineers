@@ -1,4 +1,4 @@
-{% raw %} ## Фильтры Jinja2
+## Фильтры Jinja2
 
 Ansible позволяет использовать фильтры Jinja2 не только в шаблонах, но и
 в playbook.
@@ -11,60 +11,73 @@ Ansible поддерживает не только встроенные филь
 если вы не найдете нужный вам фильтр тут, посмотрите
 `документацию <http://docs.ansible.com/ansible/playbooks_filters.html>`__.
 
-Мы уже использовали фильтры: \* to\_nice\_json в разделе
-`ios\_facts <https://natenka.gitbooks.io/pyneng/content/book/chapter15/4b_ios_facts.html>`__
-\* regex\_findall в разделе
-`роли <https://natenka.gitbooks.io/pyneng/content/book/chapter15/6c_roles.html>`__
+Мы уже использовали фильтры:
 
-    Если вас интересуют фильтр в контексте использования их в шаблонах,
-    это рассматривалось в разделе
-    `Фильтры <https://natenka.gitbooks.io/pyneng/content/book/chapter13/3d_syntax_filter.html>`__.
+* to_nice_json в разделе `ios_facts <https://ansible-for-network-engineers.readthedocs.io/en/latest/book/03_network_os_modules/ios_facts.html>`__
+* regex_findall в разделе `роли <https://ansible-for-network-engineers.readthedocs.io/en/latest/book/07_playbooks/roles.html>`__
+
+Если вас интересуют фильтр в контексте использования их в шаблонах,
+это рассматривалось в разделе
+`Фильтры <https://natenka.gitbooks.io/pyneng/content/book/chapter13/3d_syntax_filter.html>`__.
 
 Для начала, перечислим несколько фильтров для общего понимания
 возможностей.
 
-Ansible поддерживает такие фильтры (список не полный): \* `фильтры для
-форматирования
-данных <http://docs.ansible.com/ansible/playbooks_filters.html#filters-for-formatting-data>`__:
-\* ``{{ var | to_nice_json }}`` - преобразует данные в формат JSON \*
-``{{ var | to_nice_yaml }}`` - преобразует данные в формат YAML \*
-переменные \* ``{{ var | default(9) }}`` - позволяет определить значение
-по умолчанию для переменной \* ``{{ var | default(omit) }}`` - позволяет
-пропустить переменную, если она не определена \* списки \*
-``{{ lista | min }}`` - минимальный элемент списка \*
-``{{ lista | max }}`` - максимальный элемент списка \* `фильтры, которые
-работают
-множествами <http://docs.ansible.com/ansible/playbooks_filters.html#set-theory-filters>`__
-\* ``{{ list1 | unique }}`` - возвращает множество уникальных элементов
-из списка \* ``{{ list1 | difference(list2) }}`` - разница между двумя
-списками: каких элементов первого списка нет во втором \* `фильтр для
-работы с
-IP-адресами <http://docs.ansible.com/ansible/playbooks_filters_ipaddr.html>`__
-\* ``{{ var | ipaddr }}`` - проверяет является ли переменная IP-адресом
-\* регулярные выражения \* regex\_replace - замена в строке \*
-regex\_search - ищет первое совпадение с регулярным выражением \*
-regex\_findall - ищет все совпадения с регулярным выражением \* фильтры,
-которые применяют другие фильтры к последовательности объектов: \* map:
-``{{ list3 | map('int') }}`` - применяет другой фильтр к
-последовательности элементов (например, список). Также позволяет брать
-значение определенного атрибута у каждого объекта в списке. \* select:
-``{{ list4 | select('int') }}`` - фильтрует последовательность применяя
-другой фильтр к каждому из элементов. Остаются только те объекты, для
-которых тест отработал. \* конвертация типов *  ``{{ var | int }}`` -
-конвертирует значение в число, по умолчанию, в десятичное *
-``{{ var | list }}`` - конвертирует значение в список
+Ansible поддерживает такие фильтры (список не полный):
+* `фильтры для форматирования данных <http://docs.ansible.com/ansible/playbooks_filters.html#filters-for-formatting-data>`__:
 
-to\_nice\_yaml
+  * ``{{ var | to_nice_json }}`` - преобразует данные в формат JSON
+  * ``{{ var | to_nice_yaml }}`` - преобразует данные в формат YAML
+
+* переменные
+  
+  * ``{{ var | default(9) }}`` - позволяет определить значение по умолчанию для переменной
+  * ``{{ var | default(omit) }}`` - позволяет пропустить переменную, если она не определена
+
+* списки
+
+  * ``{{ lista | min }}`` - минимальный элемент списка
+  * ``{{ lista | max }}`` - максимальный элемент списка
+
+* `фильтры, которые работают множествами <http://docs.ansible.com/ansible/playbooks_filters.html#set-theory-filters>`__
+
+  * ``{{ list1 | unique }}`` - возвращает множество уникальных элементов из списка
+  * ``{{ list1 | difference(list2) }}`` - разница между двумя списками: каких элементов первого списка нет во втором
+
+* `фильтр для работы с IP-адресами <http://docs.ansible.com/ansible/playbooks_filters_ipaddr.html>`__
+
+  * ``{{ var | ipaddr }}`` - проверяет является ли переменная IP-адресом
+
+* регулярные выражения
+
+  * regex_replace - замена в строке
+  * regex_search - ищет первое совпадение с регулярным выражением
+  * regex_findall - ищет все совпадения с регулярным выражением
+
+* фильтры, которые применяют другие фильтры к последовательности объектов:
+
+  * map: ``{{ list3 | map('int') }}`` - применяет другой фильтр к
+    последовательности элементов (например, список). Также позволяет брать 
+    значение определенного атрибута у каждого объекта в списке.
+  * select: ``{{ list4 | select('int') }}`` - фильтрует последовательность применяя
+    другой фильтр к каждому из элементов. Остаются только те объекты, для которых тест отработал.
+
+* конвертация типов
+  
+  * ``{{ var | int }}`` - конвертирует значение в число, по умолчанию, в десятичное
+  * ``{{ var | list }}`` - конвертирует значение в список
+
+to_nice_yaml
 ~~~~~~~~~~~~~~
 
-Фильтры to\_nice\_yaml (to\_nice\_json) можно использовать для того,
+Фильтры to_nice_yaml (to_nice_json) можно использовать для того,
 чтобы записать нужную информацию в файл.
 
-    Ansible также поддерживает фильтры to\_json и to\_yaml, но их
-    сложнее воспринимать визуально.
+Ansible также поддерживает фильтры to_json и to_yaml, но их
+сложнее воспринимать визуально.
 
-Повторим пример из раздела ios\_facts. Playbook
-8\_playbook\_filters\_to\_nice\_yaml.yml:
+Повторим пример из раздела ios_facts. Playbook
+8_playbook_filters_to_nice_yaml.yml:
 
 .. code:: json
 
@@ -95,10 +108,8 @@ to\_nice\_yaml
     $ ansible-playbook 8_playbook_filters_to_nice_yaml.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_filters_to_nice_yaml.png
-   :alt: 8\_playbook\_filters\_to\_nice\_yaml
 
-   8\_playbook\_filters\_to\_nice\_yaml
-Теперь в каталоге all\_facts появились такие файлы:
+Теперь в каталоге all_facts появились такие файлы:
 
 ::
 
@@ -106,7 +117,7 @@ to\_nice\_yaml
     192.168.100.2_facts.yml
     192.168.100.3_facts.yml
 
-Файл all\_facts/192.168.100.1\_facts.yml:
+Файл all_facts/192.168.100.1_facts.yml:
 
 ::
 
@@ -121,7 +132,7 @@ to\_nice\_yaml
             service password-encryption\n!\nhostname R1\n!\nboot-start-marker\n
     ...
 
-regex\_findall, map, max
+regex_findall, map, max
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Посмотрим пример использования фильтров одновременно и в шаблоне, и в
@@ -158,7 +169,7 @@ VPN (GRE + IPsec) для двух сторон.
      tunnel destination 192.168.100.2
      tunnel protection ipsec profile GRE
 
-Playbook 8\_playbook\_filters\_regex.yml
+Playbook 8_playbook_filters_regex.yml
 
 ::
 
@@ -218,7 +229,7 @@ Playbook 8\_playbook\_filters\_regex.yml
 было повторять несколько раз одни и те же вещи (например, адреса).
 
 И, в данном случае не очень удобно будет, если мы будем создавать
-переменные в файлах host\_vars. Удобней создать их в самом playbook, а
+переменные в файлах host_vars. Удобней создать их в самом playbook, а
 когда нужно будет сгенерировать конфигурацию для другой пары устройств,
 достаточно будет сменить адреса в playbook.
 
@@ -232,7 +243,7 @@ Playbook 8\_playbook\_filters\_regex.yml
         tun_ip_1: 10.0.1.1 255.255.255.252
         tun_ip_2: 10.0.1.2 255.255.255.252
 
-    Вместо адресов wan\_ip\_1, wan\_ip\_2, вам нужно будет подставить
+    Вместо адресов wan_ip_1, wan_ip_2, вам нужно будет подставить
     белые адреса маршрутизаторов.
 
 Адреса мы задаем вручную. Но, всё остальное, хотелось бы делать
@@ -255,11 +266,11 @@ Playbook 8\_playbook\_filters\_regex.yml
 
 Теперь мы создадим факт, для каждого из маршрутизаторов, который будет
 содержать список текущих номеров туннелей. Создаем факт мы с помощью
-модуля set\_fact.
+модуля set_fact.
 
 Факт создается на основе того, что нам выдаст результат поиска в
 конфигурации строки ``interface TunnelX`` с помощью фильтра
-regex\_findall. Этот фильтр ищет все строки, которые совпадают с
+regex_findall. Этот фильтр ищет все строки, которые совпадают с
 регулярным выражением. А затем, запоминает и записывает в список то, что
 попало в круглые скобки (номер туннеля).
 
@@ -281,7 +292,7 @@ regex\_findall. Этот фильтр ищет все строки, которы
 Благодаря этому условию, мы выбираем для какого устройства будет
 сгенерирован какой конфиг.
 
-ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
+ansible_net_all_ipv4_addresses - это список IP-адресов на
 устройства, вида:
 
 ::
@@ -293,7 +304,7 @@ ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
 Этот список был получен в задаче по сбору фактов.
 
 Задача будет выполняться только в том случае, если в списке адресов на
-устройстве, был найден адрес wan\_ip\_1.
+устройстве, был найден адрес wan_ip_1.
 
 Генерация шаблонов:
 
@@ -311,7 +322,7 @@ ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
             dest: configs/result2.txt
           when: wan_ip_2 in ansible_net_all_ipv4_addresses
 
-Шаблон templates/ios\_vpn1.txt выглядит таким образом:
+Шаблон templates/ios_vpn1.txt выглядит таким образом:
 
 ::
 
@@ -342,7 +353,7 @@ ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
      tunnel destination {{ wan_ip_2 }}
      tunnel protection ipsec profile GRE
 
-Шаблон templates/ios\_vpn2.txt выглядит точно также, меняются только
+Шаблон templates/ios_vpn2.txt выглядит точно также, меняются только
 переменные с адресами:
 
 ::
@@ -388,7 +399,7 @@ ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
      {% set tun_num = tun_num + 1 %}
     {% endif %}
 
-Переменная tun\_num - это факт, который мы устанавливали в playbook.
+Переменная tun_num - это факт, который мы устанавливали в playbook.
 Если на маршрутизаторе созданы туннели, эта переменная содержит список
 номеров туннелей. Но, если на маршрутизаторе нет ни одного туннеля, мы
 получим пустой список.
@@ -397,7 +408,7 @@ ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
 Если мы получили список с номерами, то мы вычисляем максимальный и
 используем следующий номер, для нашего туннеля.
 
-Если переменная tun\_num будет пустым списком, нам нужно установить её
+Если переменная tun_num будет пустым списком, нам нужно установить её
 равной 0 (пустой список - False):
 
 ::
@@ -407,7 +418,7 @@ ansible\_net\_all\_ipv4\_addresses - это список IP-адресов на
 
 Иначе, нам нужно сначала конвертировать строки в числа, затем выбрать из
 чисел максимальное и добавить 1. Это и будет значение переменной
-tun\_num.
+tun_num.
 
 ::
 
@@ -423,11 +434,9 @@ tun\_num.
     $ ansible-playbook 8_playbook_filters_regex.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_filters_regex.png
-   :alt: 8\_playbook\_filters\_regex
 
-   8\_playbook\_filters\_regex
-    На маршрутизаторе 192.168.100.1 специально созданы несколько
-    туннелей. А на маршрутизаторе 192.168.100.2 нет ни одного туннеля.
+На маршрутизаторе 192.168.100.1 специально созданы несколько
+туннелей. А на маршрутизаторе 192.168.100.2 нет ни одного туннеля.
 
 В результате, мы получили такие конфигурации (configs/result1.txt):
 
@@ -479,4 +488,3 @@ tun\_num.
      tunnel destination 192.168.100.1
      tunnel protection ipsec profile GRE
 
-{% endraw %}
