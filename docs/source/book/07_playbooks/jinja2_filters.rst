@@ -1,4 +1,5 @@
-## Фильтры Jinja2
+Фильтры Jinja2
+--------------
 
 Ansible позволяет использовать фильтры Jinja2 не только в шаблонах, но и
 в playbook.
@@ -24,6 +25,7 @@ Ansible поддерживает не только встроенные филь
 возможностей.
 
 Ansible поддерживает такие фильтры (список не полный):
+
 * `фильтры для форматирования данных <http://docs.ansible.com/ansible/playbooks_filters.html#filters-for-formatting-data>`__:
 
   * ``{{ var | to_nice_json }}`` - преобразует данные в формат JSON
