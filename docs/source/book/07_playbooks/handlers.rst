@@ -13,7 +13,7 @@ Handlers описываются в своем подразделе playbook - ha
 
 Пример использования handlers (playbook 8_handlers.yml):
 
-.. code:: yml
+::
 
     ---
 

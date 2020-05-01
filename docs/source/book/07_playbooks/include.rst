@@ -27,7 +27,7 @@ Task include позволяют подключать в текущий playbook 
 
 Файл tasks/cisco_vty_cfg.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -45,7 +45,7 @@ Task include позволяют подключать в текущий playbook 
 
 Файл tasks/cisco_ospf_cfg.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -74,7 +74,7 @@ host_vars):
 
 Playbook 8_playbook_include_tasks.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -144,7 +144,7 @@ ntc-ansible, нужно было задать ряд параметров. Та�
 Попробуем вынести задачу с использованием ntc_show_command в отдельный
 файл tasks/ntc_show.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -166,7 +166,7 @@ Ansible выполняет задачу.
 
 Playbook 8_playbook_include_tasks_var.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -193,7 +193,7 @@ ntc_show_command.
 
 Переменные можно передавать и таким образом:
 
-.. code:: yml
+::
 
       tasks:
 
@@ -212,7 +212,7 @@ Include можно использовать и в разделе handlers.
 Например, перенесем handler из предыдущих примеров в отдельный файл
 handlers/cisco_save_cfg.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -225,7 +225,7 @@ handlers/cisco_save_cfg.yml:
 И добавим его в playbook 8_playbook_include_handlers.yml через
 include:
 
-.. code:: yml
+::
 
     ---
 
@@ -272,7 +272,7 @@ Play/playbook include
 
 Например, у нас есть такой сценарий 8_play_to_include.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -296,7 +296,7 @@ Play/playbook include
 
 Добавим его в playbook 8_playbook_include_play.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -353,7 +353,7 @@ include_vars
 Например, создадим каталог vars и добавим в него файл
 vars/cisco_bgp_general.yml
 
-.. code:: yml
+::
 
     ---
 
@@ -397,7 +397,7 @@ templates/bgp.j2:
 
 Итоговый playbook 8_playbook_include_vars.yml
 
-.. code:: yml
+::
 
     ---
 
@@ -428,7 +428,7 @@ templates/bgp.j2:
 Обратите внимание, что переменные из файла подключаются отдельной
 задачей (в данном случае, можно было бы обойтись без имени задачи):
 
-.. code:: yml
+::
 
         - name: Include BGP vars
           include_vars: vars/cisco_bgp_general.yml
@@ -456,7 +456,7 @@ vars_files.
 
 Пример playbook 8_playbook_include_vars_files.yml:
 
-.. code:: yml
+::
 
     ---
 

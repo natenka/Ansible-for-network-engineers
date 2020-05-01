@@ -46,7 +46,7 @@
 
 Например, playbook all_roles.yml выглядит так:
 
-.. code:: yml
+::
 
     ---
 
@@ -147,7 +147,7 @@ security и ospf.
 
 Содержимое файла roles/usability/tasks/main.yml:
 
-.. code:: yml
+::
 
     ---
 
@@ -177,7 +177,7 @@ security и ospf.
 Содержимое файла roles/security/tasks/main.yml также должно быть
 понятно:
 
-.. code:: yml
+::
 
     ---
 
@@ -239,7 +239,7 @@ security и ospf.
 
 Файл roles/ospf/tasks/main.yml описывает задачи:
 
-.. code:: yml
+::
 
     ---
 
@@ -287,7 +287,7 @@ security и ospf.
 
 Файл roles/ospf/handlers/main.yml:
 
-.. code:: yml
+::
 
     - name: save config
       ios_command:
@@ -324,7 +324,7 @@ IP-адресов устройства, а затем удаляются лиш�
 
 Проверим работу роли на примере такого playbook cfg_ospf.yml:
 
-.. code:: yml
+::
 
     ---
 
