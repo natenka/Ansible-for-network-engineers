@@ -6,12 +6,15 @@
 ---
 - name: Collect IOS facts
   hosts: 192.168.100.100
+
   tasks:
+
     - name: Facts
       ios_facts:
         gather_subset: min
         gather_network_resources:
           - l2_interfaces
+
     - name: Show ansible_network_resources
       debug:
         msg: "{{ (ansible_network_resources.l2_interfaces |  selectattr('name', 'equalto', 'Ethernet1/1') | list | first ) }}"
@@ -44,7 +47,9 @@ PLAY RECAP *********************************************************************
 ---
 - name: Run show commands on routers
   hosts: 192.168.100.1
+
   tasks:
+
     - name: run show commands
       ios_command:
         commands: ping 192.168.100.5 timeout 1 repeat 10
