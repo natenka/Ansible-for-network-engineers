@@ -58,3 +58,28 @@ PLAY RECAP *********************************************************************
       register: result
       failed_when: "'Success rate is 100 percent' not in result.stdout"
 ```
+
+### Как записать из Python данных инвентарный файл и избавиться от null
+
+[Взято отсюда](https://stackoverflow.com/questions/37200150/can-i-dump-blank-instead-of-null-in-yaml-pyyaml)
+
+```
+In [1]: import yaml
+
+In [2]: def represent_none(self, _):
+   ...:     return self.represent_scalar('tag:yaml.org,2002:null', '')
+   ...:
+   ...: yaml.add_representer(type(None), represent_none)
+
+In [3]: d = {"cisco-switches": {"hosts": {"sw1": None, "sw2": None}}}
+
+In [4]: with open("result.yaml", "w") as f:
+   ...:     yaml.dump(d, f)
+   ...:
+
+In [5]: cat result.yaml
+cisco-switches:
+  hosts:
+    sw1:
+    sw2:
+```
