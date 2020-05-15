@@ -41,6 +41,30 @@ PLAY RECAP *********************************************************************
 192.168.100.100            : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
+Если значение в переменной
+```
+---
+
+- name: Collect IOS facts
+  hosts: 192.168.100.1
+
+  vars:
+    my_interface: "Ethernet0/2"
+
+  tasks:
+
+    - name: Facts
+      ios_facts:
+        gather_subset: min
+        gather_network_resources:
+          - l2_interfaces
+
+    - name: Show ansible_network_resources
+      debug:
+        msg: "{{ (ansible_network_resources.l2_interfaces |  selectattr('name', 'match', my_interface ) | list ) }}"
+
+```
+
 ### Ждать выполнения долгой команды и указать когда статус fail
 
 ```
