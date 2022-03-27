@@ -47,7 +47,7 @@
 * VyOS
 
 Полный список всех сетевых модулей, которые поддерживает Ansible, в
-`документации <http://docs.ansible.com/ansible/latest/modules/list_of_network_modules.html>`__.
+`документации <https://docs.ansible.com/ansible/2.9/modules/list_of_network_modules.html>`__.
 
 Обратите внимание, что Ansible очень активно развивается в сторону
 поддержки работы с сетевым оборудованием, и в следующей версии Ansible,
