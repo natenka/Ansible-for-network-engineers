@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Работа с результатами выполнения модуля
 ---------------------------------------
 
@@ -178,4 +182,3 @@ register, debug, when
     $ ansible-playbook 3_register_debug_when.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/15_ansible/3_register_debug_when.png
-

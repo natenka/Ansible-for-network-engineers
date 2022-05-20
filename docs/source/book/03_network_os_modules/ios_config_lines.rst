@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 lines (commands)
 ----------------
 
@@ -91,5 +95,3 @@ Ansible выполняет такие команды:
     $ ansible-playbook 1_ios_config_mult_lines.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/15_ansible/6_ios_config_mult_lines.png
-
-

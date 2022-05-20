@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 after
 -----
 
@@ -91,5 +95,3 @@ after
     $ ansible-playbook 7_ios_config_after_save.yml -v
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/15_ansible/6f_ios_config_after_save.png
-
-

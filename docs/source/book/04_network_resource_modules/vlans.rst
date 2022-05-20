@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 ios_vlans
 ---------
 
@@ -126,5 +130,3 @@ Playbook 5_ios_vlans.yml
 
     PLAY RECAP ******************************************************************
     192.168.100.100: ok=2  changed=1  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
-
-

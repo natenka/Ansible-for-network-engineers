@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 defaults
 --------
 
@@ -68,5 +72,3 @@ sh run all. По умолчанию этот параметр отключен, 
     $ ansible-playbook 6_ios_config_defaults.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/15_ansible/6e_ios_config_defaults.png
-
-

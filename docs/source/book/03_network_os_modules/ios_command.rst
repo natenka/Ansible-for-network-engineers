@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Модуль ios_command
 -------------------
 
@@ -225,5 +229,3 @@ Playbook 3_ios_command_wait_for_interval.yml выполняет две попы�
     $ ansible-playbook 3_ios_command_wait_for_interval.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/15_ansible/3_ios_command_waitfor_fail.png
-
-

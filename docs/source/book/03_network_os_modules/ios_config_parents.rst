@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 parents
 -------
 
@@ -69,4 +73,3 @@ parents
               - class class-default
             lines:
               - shape average 100000000 1000000
-

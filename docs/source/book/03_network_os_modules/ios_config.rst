@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Модуль ios_config
 ==================
 
@@ -52,4 +56,3 @@
    ios_config_match
    ios_config_replace
    ios_config_src
-
