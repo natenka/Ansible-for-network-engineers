@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Особенности подключения к сетевому оборудованию
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -109,4 +113,3 @@ ios_facts и ios_config. Для того, чтобы все примеры playb
     ansible_become: yes
     ansible_become_method: enable
     ansible_become_pass: cisco
-

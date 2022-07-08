@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 .. raw:: latex
 
    \newpage
@@ -16,4 +20,3 @@
    copy.rst
    fetch.rst
    mail.rst
-

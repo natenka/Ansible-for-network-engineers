@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 replace
 -------
 
@@ -131,4 +135,3 @@ Playbook 10_ios_config_replace_block.yml:
      permit tcp 10.0.1.0 0.0.0.255 any eq 22
      permit icmp any any
      deny   ip any any
-

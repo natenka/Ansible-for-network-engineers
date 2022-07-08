@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Дополнительные материалы
 ------------------------
 
@@ -75,4 +79,3 @@ Network Config Templating using Ansible (Kirk Byers):
 -  http://jedelman.com/home/ansible-for-networking/
 -  http://jedelman.com/home/network-automation-with-ansible-dynamically-configuring-interface-descriptions/
 -  http://www.packetgeek.net/2015/08/using-ansible-to-push-cisco-ios-configurations/
-

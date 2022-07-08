@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 .. raw:: latex
 
    \newpage
@@ -39,4 +43,3 @@
    jinja2_tests.rst
    loops.rst
    conditionals.rst
-

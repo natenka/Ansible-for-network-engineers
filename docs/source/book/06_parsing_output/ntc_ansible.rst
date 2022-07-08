@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 ntc-ansible
 ===========
 
@@ -298,4 +302,3 @@ all_facts/192.168.100.1_sh_ip_int_br.json:
     cisco_ios_show_capability_feature_routing.template,  .*, cisco_ios, sh[[ow]] cap[[ability]] f[[eature]] r[[outing]]
     cisco_ios_show_aliases.template,  .*, cisco_ios, sh[[ow]] alia[[ses]]
     ...
-

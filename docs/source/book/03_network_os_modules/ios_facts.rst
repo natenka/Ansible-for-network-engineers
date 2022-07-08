@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Модуль ios_facts
 -----------------
 
@@ -280,4 +284,3 @@ all_facts/{{inventory_hostname}}_facts.json.
     $ ansible-playbook 3_ios_facts.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/PyNEng/master/images/15_ansible/5a_ios_facts_no_change.png
-

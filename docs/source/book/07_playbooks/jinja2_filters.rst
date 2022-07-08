@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Фильтры Jinja2
 --------------
 
@@ -489,4 +493,3 @@ tun_num.
      tunnel source 192.168.100.2
      tunnel destination 192.168.100.1
      tunnel protection ipsec profile GRE
-

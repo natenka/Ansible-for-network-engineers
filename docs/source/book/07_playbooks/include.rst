@@ -1,3 +1,7 @@
+.. meta::
+   :http-equiv=Content-Type: text/html; charset=utf-8
+
+
 Include
 -------
 
@@ -493,5 +497,3 @@ vars_files.
     $ ansible-playbook 8_playbook_include_vars_files.yml
 
 .. figure:: https://raw.githubusercontent.com/natenka/Ansible-for-network-engineers/master/images/8_playbook_include_vars_files.png
-
-
