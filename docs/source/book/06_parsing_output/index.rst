@@ -20,6 +20,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    ntc_ansible
    further_reading

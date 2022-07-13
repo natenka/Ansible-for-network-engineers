@@ -35,6 +35,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    handlers.rst
    include.rst

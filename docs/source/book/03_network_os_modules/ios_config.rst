@@ -44,6 +44,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    ios_config_lines
    ios_config_parents

@@ -55,6 +55,7 @@ Ansible:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    install
    inventory

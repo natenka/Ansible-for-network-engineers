@@ -2,12 +2,14 @@
    :http-equiv=Content-Type: text/html; charset=utf-8
 
 
-Ansible для сетевых инженеров
-=============================
+Основы Ansible 2.9 для сетевых инженеров
+========================================
 
 .. warning::
 
-    Книга в процессе написания!
+    Книга не обновляется и не дописывается! Используется версия Ansible 2.9.
+    `По некоторым темам есть видео лекции <https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF>`__.
+
 
 Ansible - это система управления конфигурациями. Ansible позволяет
 автоматизировать и упростить настройку, обслуживание и развертывание
@@ -49,6 +51,7 @@ Ansible. Связано это с тем, что Ansible не требует у�
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    book/01_basics/index.rst
    book/02_playbook_basics/index.rst
@@ -57,3 +60,11 @@ Ansible. Связано это с тем, что Ansible не требует у�
    book/05_network_cli_modules/index.rst
    book/06_parsing_output/index.rst
    book/07_playbooks/index.rst
+
+.. toctree::
+   :caption: Ресурсы
+   :maxdepth: 1
+   :hidden:
+
+   Задания, примеры кода <https://github.com/natenka/pyneng-examples-exercises/>
+   Запись лекций по Ansible 2.9 <https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF>

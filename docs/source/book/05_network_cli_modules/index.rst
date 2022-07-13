@@ -22,6 +22,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    cli_command
    cli_config

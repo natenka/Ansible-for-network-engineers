@@ -13,6 +13,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    template.rst
    set_fact.rst

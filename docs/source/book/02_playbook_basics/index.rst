@@ -24,6 +24,7 @@ Playbook (файл сценариев) — это файл, в котором о
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    README
    variables

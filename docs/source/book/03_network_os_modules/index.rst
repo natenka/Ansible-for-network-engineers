@@ -77,6 +77,7 @@ IOS:
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    ios_command
    ios_facts

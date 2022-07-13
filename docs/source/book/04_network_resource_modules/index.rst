@@ -32,6 +32,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    get_resources
    interfaces
