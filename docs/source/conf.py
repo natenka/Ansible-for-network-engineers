@@ -17,12 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Ansible для сетевых инженеров'
-copyright = '2020, Natasha Samoylenko'
+project = 'Основы Ansible для сетевых инженеров'
+copyright = '2020-2022, Natasha Samoylenko'
 author = 'Natasha Samoylenko'
-
-# The full version, including alpha/beta/rc tags
-release = '0.0.5'
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,6 +28,9 @@ release = '0.0.5'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.imgconverter",
+    "sphinx_inline_tabs",
+    "sphinx_copybutton",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -54,10 +54,28 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
 #html_sidebars = {
 #    "**": ["about.html", "searchbox.html", "localtoc.html", "navigation.html"]
 #}
+html_title = 'Основы Ansible для сетевых инженеров'
+html_theme_options = {
+    "prev_next_buttons_location": "both",
+    "navigation_with_keys": True,
+    "top_of_page_button": None,
+    "announcement": (
+        'Книга не обновляется! Используется версия Ansible 2.9. '
+        '<a href="https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF">По некоторым темам есть видео лекции.</a>'
+    ),
+    "light_css_variables": {
+        "color-brand-primary": "#336790",  # "blue"
+        "color-brand-content": "#336790",
+    },
+    "dark_css_variables": {
+        "color-brand-primary": "#E5B62F",  # "yellow"
+        "color-brand-content": "#E5B62F",
+    },
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
