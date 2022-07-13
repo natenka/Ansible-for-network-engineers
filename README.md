@@ -1,3 +1,5 @@
-# Ansible для сетевых инженеров
+# Основы Ansible 2.9 для сетевых инженеров
 
-[![Documentation Status](https://readthedocs.org/projects/ansible-for-network-engineers/badge/?version=latest)](https://ansible-for-network-engineers.readthedocs.io/en/latest/?badge=latest)
+## Книга не обновляется и не дописывается! Используется версия Ansible 2.9
+## [По некоторым темам есть видео лекции](https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF)
+
