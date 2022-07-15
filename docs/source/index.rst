@@ -57,9 +57,8 @@ Ansible. Связано это с тем, что Ansible не требует у�
    book/02_playbook_basics/index.rst
    book/03_network_os_modules/index.rst
    book/04_network_resource_modules/index.rst
-   book/05_network_cli_modules/index.rst
-   book/06_parsing_output/index.rst
-   book/07_playbooks/index.rst
+   book/05_parsing_output/index.rst
+   book/06_playbooks/index.rst
    download
 
 .. toctree::
