@@ -65,7 +65,6 @@ html_theme_options = {
     "top_of_page_button": None,
     "announcement": (
         'Книга не обновляется! Используется версия Ansible 2.9. '
-        '<a href="https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF">По некоторым темам есть видео лекции.</a>'
     ),
     "light_css_variables": {
         "color-brand-primary": "#336790",  # "blue"

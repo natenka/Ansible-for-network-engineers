@@ -8,7 +8,6 @@
 .. warning::
 
     Книга не обновляется и не дописывается! Используется версия Ansible 2.9.
-    `По некоторым темам есть видео лекции <https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF>`__.
 
 
 Ansible - это система управления конфигурациями. Ansible позволяет
@@ -67,4 +66,3 @@ Ansible. Связано это с тем, что Ansible не требует у�
    :hidden:
 
    Задания, примеры кода <https://github.com/natenka/pyneng-examples-exercises/>
-   Запись лекций по Ansible 2.9 <https://www.youtube.com/playlist?list=PLah0HUih_ZRnuI_K5-GV4FdAO9dVkRIGF>
